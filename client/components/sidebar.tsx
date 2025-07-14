@@ -31,7 +31,7 @@ export function Sidebar({
   onClearFilters,
 }: SidebarProps) {
   const categories = [
-    { value: "", label: "All Categories" },
+    { value: "all", label: "All Categories" },
     { value: "fiction", label: "Fiction" },
     { value: "biography", label: "Biography" },
     { value: "history", label: "History" },
@@ -45,7 +45,7 @@ export function Sidebar({
   ];
 
   const languages = [
-    { value: "", label: "All Languages" },
+    { value: "all", label: "All Languages" },
     { value: "en", label: "English" },
     { value: "pt", label: "Portuguese" },
     { value: "es", label: "Spanish" },
@@ -57,7 +57,7 @@ export function Sidebar({
   ];
 
   const publishedDates = [
-    { value: "", label: "Any Time" },
+    { value: "all", label: "Any Time" },
     { value: "2020-", label: "Since 2020" },
     { value: "2010-2020", label: "2010-2020" },
     { value: "2000-2010", label: "2000-2010" },
