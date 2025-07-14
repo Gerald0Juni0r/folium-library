@@ -16,72 +16,72 @@ export function Footer() {
               </h3>
             </div>
             <p className="text-sm text-muted-foreground max-w-xs">
-              Discover your next great read with our comprehensive book search
-              platform.
+              Descubra sua próxima grande leitura com nossa plataforma
+              abrangente de busca de livros.
             </p>
           </div>
 
-          {/* Quick Links */}
+          {/* Links Rápidos */}
           <div className="space-y-3">
             <h4 className="font-medium text-folium-ink dark:text-folium-cream">
-              Quick Links
+              Links Rápidos
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <a
-                  href="/about"
+                  href="/sobre"
                   className="text-muted-foreground hover:text-folium-sage transition-colors"
                 >
-                  About Us
+                  Sobre Nós
                 </a>
               </li>
               <li>
                 <a
-                  href="/contact"
+                  href="/contato"
                   className="text-muted-foreground hover:text-folium-sage transition-colors"
                 >
-                  Contact
+                  Contato
                 </a>
               </li>
               <li>
                 <a
-                  href="/help"
+                  href="/ajuda"
                   className="text-muted-foreground hover:text-folium-sage transition-colors"
                 >
-                  Help Center
+                  Central de Ajuda
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Categories */}
+          {/* Categorias */}
           <div className="space-y-3">
             <h4 className="font-medium text-folium-ink dark:text-folium-cream">
-              Categories
+              Categorias
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <a
-                  href="/fiction"
+                  href="/ficcao"
                   className="text-muted-foreground hover:text-folium-sage transition-colors"
                 >
-                  Fiction
+                  Ficção
                 </a>
               </li>
               <li>
                 <a
-                  href="/non-fiction"
+                  href="/nao-ficcao"
                   className="text-muted-foreground hover:text-folium-sage transition-colors"
                 >
-                  Non-Fiction
+                  Não-ficção
                 </a>
               </li>
               <li>
                 <a
-                  href="/science"
+                  href="/ciencia"
                   className="text-muted-foreground hover:text-folium-sage transition-colors"
                 >
-                  Science
+                  Ciência
                 </a>
               </li>
             </ul>
@@ -95,18 +95,18 @@ export function Footer() {
             <ul className="space-y-2 text-sm">
               <li>
                 <a
-                  href="/terms"
+                  href="/termos"
                   className="text-muted-foreground hover:text-folium-sage transition-colors"
                 >
-                  Terms of Service
+                  Termos de Serviço
                 </a>
               </li>
               <li>
                 <a
-                  href="/privacy"
+                  href="/privacidade"
                   className="text-muted-foreground hover:text-folium-sage transition-colors"
                 >
-                  Privacy Policy
+                  Política de Privacidade
                 </a>
               </li>
               <li>
@@ -114,7 +114,7 @@ export function Footer() {
                   href="/cookies"
                   className="text-muted-foreground hover:text-folium-sage transition-colors"
                 >
-                  Cookie Policy
+                  Política de Cookies
                 </a>
               </li>
             </ul>
@@ -124,10 +124,10 @@ export function Footer() {
         <hr className="my-6 border-folium-silver dark:border-folium-silver/30" />
 
         <div className="flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
-          <p>© 2024 Folium. All rights reserved.</p>
+          <p>© 2024 Folium. Todos os direitos reservados.</p>
           <p className="flex items-center gap-1 mt-2 md:mt-0">
-            Made with <Heart className="h-4 w-4 text-red-500 fill-current" />{" "}
-            for book lovers
+            Feito com <Heart className="h-4 w-4 text-red-500 fill-current" />{" "}
+            para amantes de livros
           </p>
         </div>
       </div>
