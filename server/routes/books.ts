@@ -56,7 +56,7 @@ export const searchBooks: RequestHandler = async (req, res) => {
 
     // Handle published date filter
     let dateFilter = "";
-    if (publishedDate && publishedDate !== "") {
+    if (publishedDate && publishedDate !== "all") {
       const now = new Date().getFullYear();
       switch (publishedDate) {
         case "2020-":
