@@ -113,6 +113,20 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
   };
 
+  const updateUsuario = async (dadosAtualizados: User): Promise<boolean> => {
+    try {
+      // Simular uma chamada de API
+      await new Promise((resolve) => setTimeout(resolve, 500));
+
+      setUsuario(dadosAtualizados);
+      localStorage.setItem("folium-usuario", JSON.stringify(dadosAtualizados));
+      return true;
+    } catch (error) {
+      console.error("Erro ao atualizar usuário:", error);
+      return false;
+    }
+  };
+
   const logout = () => {
     setUsuario(null);
     localStorage.removeItem("folium-usuario");
@@ -121,7 +135,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   return (
     <AuthContext.Provider
-      value={{ usuario, isLoading, login, cadastrar, logout }}
+      value={{ usuario, isLoading, login, cadastrar, updateUsuario, logout }}
     >
       {children}
     </AuthContext.Provider>
