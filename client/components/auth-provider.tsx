@@ -47,11 +47,23 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const login = async (email: string, senha: string): Promise<boolean> => {
     try {
       // Simular uma chamada de API
-      // Em produção, isso seria uma chamada real para o backend
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      // Para demonstração, aceitar qualquer email/senha
-      if (email && senha) {
+      // Credenciais de teste específicas
+      if (email === "folium@folium.com" && senha === "123456") {
+        const usuarioTeste: User = {
+          id: "1",
+          nome: "Usuário Teste",
+          email: "folium@folium.com",
+        };
+
+        setUsuario(usuarioTeste);
+        localStorage.setItem("folium-usuario", JSON.stringify(usuarioTeste));
+        return true;
+      }
+
+      // Para demonstração, aceitar qualquer outro email/senha válidos
+      if (email && senha && senha.length >= 6) {
         const novoUsuario: User = {
           id: Date.now().toString(),
           nome: email.split("@")[0],
