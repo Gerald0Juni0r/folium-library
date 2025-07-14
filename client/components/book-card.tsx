@@ -5,4 +5,147 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 
-interface BookInfo {\n  id: string;\n  title: string;\n  authors: string[];\n  description?: string;\n  thumbnail?: string;\n  categories?: string[];\n  publishedDate?: string;\n  pageCount?: number;\n  averageRating?: number;\n  language?: string;\n  previewLink?: string;\n}\n\ninterface BookCardProps {\n  book: BookInfo;\n}\n\nexport function BookCard({ book }: BookCardProps) {\n  const [isSaved, setIsSaved] = useState(false);\n\n  const handleSave = () => {\n    setIsSaved(!isSaved);\n    toast.success(\n      isSaved ? \"Book removed from library\" : \"Book saved to library\",\n    );\n  };\n\n  const formatAuthors = (authors: string[]) => {\n    if (!authors || authors.length === 0) return \"Unknown Author\";\n    if (authors.length === 1) return authors[0];\n    if (authors.length === 2) return authors.join(\" & \");\n    return `${authors[0]} & ${authors.length - 1} others`;\n  };\n\n  const truncateText = (text: string, maxLength: number) => {\n    if (!text) return \"\";\n    return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;\n  };\n\n  return (\n    <Card className=\"group h-full bg-folium-cream dark:bg-folium-steel border-folium-silver dark:border-folium-silver/30 hover:shadow-lg transition-all duration-300 hover:scale-[1.02] animate-fade-in\">\n      <CardContent className=\"p-4 h-full flex flex-col\">\n        <div className=\"flex gap-4 h-full\">\n          {/* Book Cover */}\n          <div className=\"flex-shrink-0\">\n            <div className=\"w-20 h-28 md:w-24 md:h-32 rounded-md overflow-hidden bg-folium-parchment dark:bg-folium-silver/20 border border-folium-silver dark:border-folium-silver/30\">\n              {book.thumbnail ? (\n                <img\n                  src={book.thumbnail.replace('&edge=curl', '')}\n                  alt={book.title}\n                  className=\"w-full h-full object-cover\"\n                  loading=\"lazy\"\n                />\n              ) : (\n                <div className=\"w-full h-full flex items-center justify-center\">\n                  <BookmarkPlus className=\"h-6 w-6 text-folium-sepia dark:text-folium-sepia\" />\n                </div>\n              )}\n            </div>\n          </div>\n\n          {/* Book Info */}\n          <div className=\"flex-1 min-w-0 flex flex-col\">\n            {/* Title and Author */}\n            <div className=\"mb-2\">\n              <h3 className=\"font-serif font-semibold text-folium-ink dark:text-folium-cream line-clamp-2 text-sm md:text-base leading-tight\">\n                {book.title}\n              </h3>\n              <p className=\"text-folium-sepia dark:text-folium-parchment text-xs md:text-sm mt-1\">\n                {formatAuthors(book.authors)}\n              </p>\n            </div>\n\n            {/* Metadata */}\n            <div className=\"flex flex-wrap gap-1 mb-2\">\n              {book.publishedDate && (\n                <Badge\n                  variant=\"secondary\"\n                  className=\"text-xs bg-folium-parchment dark:bg-folium-silver/20 text-folium-sepia dark:text-folium-parchment border-0\"\n                >\n                  {new Date(book.publishedDate).getFullYear()}\n                </Badge>\n              )}\n              {book.categories && book.categories[0] && (\n                <Badge\n                  variant=\"secondary\"\n                  className=\"text-xs bg-folium-sage/20 text-folium-sage dark:bg-folium-sage/30 dark:text-folium-sage border-0\"\n                >\n                  {book.categories[0]}\n                </Badge>\n              )}\n              {book.averageRating && (\n                <Badge\n                  variant=\"secondary\"\n                  className=\"text-xs bg-folium-azure/20 text-folium-azure dark:bg-folium-azure/30 dark:text-folium-azure border-0 flex items-center gap-1\"\n                >\n                  <Star className=\"h-3 w-3\" />\n                  {book.averageRating.toFixed(1)}\n                </Badge>\n              )}\n            </div>\n\n            {/* Description */}\n            {book.description && (\n              <p className=\"text-xs md:text-sm text-muted-foreground line-clamp-3 mb-3 flex-1\">\n                {truncateText(book.description.replace(/<[^>]*>/g, \"\"), 120)}\n              </p>\n            )}\n\n            {/* Actions */}\n            <div className=\"flex gap-2 mt-auto\">\n              <Button\n                onClick={handleSave}\n                size=\"sm\"\n                variant={isSaved ? \"default\" : \"outline\"}\n                className={`flex-1 text-xs ${\n                  isSaved\n                    ? \"bg-folium-sage hover:bg-folium-sage/90 text-white\"\n                    : \"bg-background hover:bg-folium-parchment dark:hover:bg-folium-silver/20 border-folium-silver dark:border-folium-silver/30\"\n                }`}\n              >\n                <Heart\n                  className={`h-3 w-3 mr-1 ${\n                    isSaved ? \"fill-current\" : \"\"\n                  }`}\n                />\n                {isSaved ? \"Saved\" : \"Save\"}\n              </Button>\n              {book.previewLink && (\n                <Button\n                  size=\"sm\"\n                  variant=\"outline\"\n                  className=\"bg-background hover:bg-folium-parchment dark:hover:bg-folium-silver/20 border-folium-silver dark:border-folium-silver/30\"\n                  onClick={() => window.open(book.previewLink, \"_blank\")}\n                >\n                  <ExternalLink className=\"h-3 w-3\" />\n                </Button>\n              )}\n            </div>\n          </div>\n        </div>\n      </CardContent>\n    </Card>\n  );\n}
+interface BookInfo {
+  id: string;
+  title: string;
+  authors: string[];
+  description?: string;
+  thumbnail?: string;
+  categories?: string[];
+  publishedDate?: string;
+  pageCount?: number;
+  averageRating?: number;
+  language?: string;
+  previewLink?: string;
+}
+
+interface BookCardProps {
+  book: BookInfo;
+}
+
+export function BookCard({ book }: BookCardProps) {
+  const [isSaved, setIsSaved] = useState(false);
+
+  const handleSave = () => {
+    setIsSaved(!isSaved);
+    toast.success(
+      isSaved ? "Book removed from library" : "Book saved to library",
+    );
+  };
+
+  const formatAuthors = (authors: string[]) => {
+    if (!authors || authors.length === 0) return "Unknown Author";
+    if (authors.length === 1) return authors[0];
+    if (authors.length === 2) return authors.join(" & ");
+    return `${authors[0]} & ${authors.length - 1} others`;
+  };
+
+  const truncateText = (text: string, maxLength: number) => {
+    if (!text) return "";
+    return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
+  };
+
+  return (
+    <Card className="group h-full bg-folium-cream dark:bg-folium-steel border-folium-silver dark:border-folium-silver/30 hover:shadow-lg transition-all duration-300 hover:scale-[1.02] animate-fade-in">
+      <CardContent className="p-4 h-full flex flex-col">
+        <div className="flex gap-4 h-full">
+          {/* Book Cover */}
+          <div className="flex-shrink-0">
+            <div className="w-20 h-28 md:w-24 md:h-32 rounded-md overflow-hidden bg-folium-parchment dark:bg-folium-silver/20 border border-folium-silver dark:border-folium-silver/30">
+              {book.thumbnail ? (
+                <img
+                  src={book.thumbnail.replace("&edge=curl", "")}
+                  alt={book.title}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center">
+                  <BookmarkPlus className="h-6 w-6 text-folium-sepia dark:text-folium-sepia" />
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Book Info */}
+          <div className="flex-1 min-w-0 flex flex-col">
+            {/* Title and Author */}
+            <div className="mb-2">
+              <h3 className="font-serif font-semibold text-folium-ink dark:text-folium-cream line-clamp-2 text-sm md:text-base leading-tight">
+                {book.title}
+              </h3>
+              <p className="text-folium-sepia dark:text-folium-parchment text-xs md:text-sm mt-1">
+                {formatAuthors(book.authors)}
+              </p>
+            </div>
+
+            {/* Metadata */}
+            <div className="flex flex-wrap gap-1 mb-2">
+              {book.publishedDate && (
+                <Badge
+                  variant="secondary"
+                  className="text-xs bg-folium-parchment dark:bg-folium-silver/20 text-folium-sepia dark:text-folium-parchment border-0"
+                >
+                  {new Date(book.publishedDate).getFullYear()}
+                </Badge>
+              )}
+              {book.categories && book.categories[0] && (
+                <Badge
+                  variant="secondary"
+                  className="text-xs bg-folium-sage/20 text-folium-sage dark:bg-folium-sage/30 dark:text-folium-sage border-0"
+                >
+                  {book.categories[0]}
+                </Badge>
+              )}
+              {book.averageRating && (
+                <Badge
+                  variant="secondary"
+                  className="text-xs bg-folium-azure/20 text-folium-azure dark:bg-folium-azure/30 dark:text-folium-azure border-0 flex items-center gap-1"
+                >
+                  <Star className="h-3 w-3" />
+                  {book.averageRating.toFixed(1)}
+                </Badge>
+              )}
+            </div>
+
+            {/* Description */}
+            {book.description && (
+              <p className="text-xs md:text-sm text-muted-foreground line-clamp-3 mb-3 flex-1">
+                {truncateText(book.description.replace(/<[^>]*>/g, ""), 120)}
+              </p>
+            )}
+
+            {/* Actions */}
+            <div className="flex gap-2 mt-auto">
+              <Button
+                onClick={handleSave}
+                size="sm"
+                variant={isSaved ? "default" : "outline"}
+                className={`flex-1 text-xs ${
+                  isSaved
+                    ? "bg-folium-sage hover:bg-folium-sage/90 text-white"
+                    : "bg-background hover:bg-folium-parchment dark:hover:bg-folium-silver/20 border-folium-silver dark:border-folium-silver/30"
+                }`}
+              >
+                <Heart
+                  className={`h-3 w-3 mr-1 ${isSaved ? "fill-current" : ""}`}
+                />
+                {isSaved ? "Saved" : "Save"}
+              </Button>
+              {book.previewLink && (
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="bg-background hover:bg-folium-parchment dark:hover:bg-folium-silver/20 border-folium-silver dark:border-folium-silver/30"
+                  onClick={() => window.open(book.previewLink, "_blank")}
+                >
+                  <ExternalLink className="h-3 w-3" />
+                </Button>
+              )}
+            </div>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
