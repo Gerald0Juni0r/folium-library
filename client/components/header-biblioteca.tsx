@@ -254,7 +254,7 @@ export function HeaderBiblioteca({
                     <div className="border-t border-folium-silver dark:border-folium-silver/30 pt-4">
                       <Button
                         variant="ghost"
-                        className="w-full justify-start text-left text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300"
+                        className="w-full justify-start text-left text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 hover:bg-red-50 dark:hover:bg-red-950/20"
                         onClick={() => {
                           handleLogout();
                           setMenuMobileAberto(false);
