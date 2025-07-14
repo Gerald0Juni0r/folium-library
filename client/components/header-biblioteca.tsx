@@ -36,6 +36,7 @@ export function HeaderBiblioteca({
   usuario,
 }: HeaderBibliotecaProps) {
   const { logout } = useAuth();
+  const navigate = useNavigate();
   const [menuMobileAberto, setMenuMobileAberto] = useState(false);
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
