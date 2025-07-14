@@ -20,6 +20,7 @@ interface User {
   id: string;
   nome: string;
   email: string;
+  foto?: string;
 }
 
 interface HeaderBibliotecaProps {
