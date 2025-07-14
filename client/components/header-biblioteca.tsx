@@ -113,9 +113,20 @@ export function HeaderBiblioteca({
                   className="relative h-10 w-10 rounded-full"
                 >
                   <Avatar className="h-10 w-10">
-                    <AvatarFallback className="bg-folium-sage text-white">
-                      {getInitials(usuario.nome)}
-                    </AvatarFallback>
+                    {usuario.foto ? (
+                      usuario.foto.startsWith("data:") ||
+                      usuario.foto.startsWith("http") ? (
+                        <AvatarImage src={usuario.foto} alt="Foto do perfil" />
+                      ) : (
+                        <div className="flex items-center justify-center h-full w-full text-xl bg-folium-sage/10">
+                          {usuario.foto}
+                        </div>
+                      )
+                    ) : (
+                      <AvatarFallback className="bg-folium-sage text-white">
+                        {getInitials(usuario.nome)}
+                      </AvatarFallback>
+                    )}
                   </Avatar>
                 </Button>
               </DropdownMenuTrigger>
