@@ -89,25 +89,10 @@ export default function Biblioteca() {
 
       const data: RespostaBusca = await response.json();
 
-      // Transformar dados para português
-      const livrosPortugues = data.livros.map((livro) => ({
-        id: livro.id,
-        titulo: livro.titulo,
-        autores: livro.autores,
-        descricao: livro.descricao,
-        capa: livro.capa,
-        categorias: livro.categorias,
-        dataPublicacao: livro.dataPublicacao,
-        numeroPaginas: livro.numeroPaginas,
-        avaliacaoMedia: livro.avaliacaoMedia,
-        idioma: livro.idioma,
-        linkPreview: livro.linkPreview,
-      }));
-
       if (anexarResultados) {
-        setLivros((prev) => [...prev, ...livrosPortugues]);
+        setLivros((prev) => [...prev, ...data.livros]);
       } else {
-        setLivros(livrosPortugues);
+        setLivros(data.livros);
       }
 
       setTotalResultados(data.totalItens);
