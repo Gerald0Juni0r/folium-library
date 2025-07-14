@@ -190,9 +190,9 @@ export function HeaderBiblioteca({
                 </SheetTrigger>
                 <SheetContent
                   side="right"
-                  className="w-80 bg-folium-cream dark:bg-folium-steel border-folium-silver dark:border-folium-silver/30"
+                  className="w-80 bg-folium-cream dark:bg-folium-steel border-folium-silver dark:border-folium-silver/30 h-full max-h-screen overflow-hidden"
                 >
-                  <div className="flex flex-col h-full">
+                  <div className="flex flex-col h-full min-h-0">
                     {/* Header do Menu */}
                     <div className="pb-4 border-b border-folium-silver dark:border-folium-silver/30">
                       <h2 className="text-lg font-serif font-semibold text-folium-ink dark:text-folium-cream">
