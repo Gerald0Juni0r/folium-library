@@ -37,9 +37,9 @@ export default function Index() {
   const [totalPages, setTotalPages] = useState(0);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [filters, setFilters] = useState({
-    category: "",
-    language: "",
-    publishedDate: "",
+    category: "all",
+    language: "all",
+    publishedDate: "all",
   });
 
   const searchBooks = async (
