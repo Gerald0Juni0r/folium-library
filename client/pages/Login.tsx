@@ -62,6 +62,31 @@ export default function Login() {
           </p>
         </div>
 
+        {/* Credenciais de Teste */}
+        <div className="bg-folium-azure/10 border border-folium-azure/20 rounded-lg p-4">
+          <h3 className="font-medium text-folium-ink dark:text-folium-cream mb-2 flex items-center">
+            🧪 Credenciais de Teste
+          </h3>
+          <div className="space-y-1 text-sm text-muted-foreground">
+            <p>
+              <strong>Email:</strong> folium@folium.com
+            </p>
+            <p>
+              <strong>Senha:</strong> 123456
+            </p>
+          </div>
+          <Button
+            onClick={() => {
+              setFormData({ email: "folium@folium.com", senha: "123456" });
+            }}
+            variant="outline"
+            size="sm"
+            className="mt-2 w-full text-xs bg-background hover:bg-folium-azure/10 border-folium-azure/30"
+          >
+            Preencher Automaticamente
+          </Button>
+        </div>
+
         {/* Formulário */}
         <Card className="bg-folium-cream dark:bg-folium-steel border-folium-silver dark:border-folium-silver/30">
           <CardHeader>
