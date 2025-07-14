@@ -43,10 +43,10 @@ export const searchBooks: RequestHandler = async (req, res) => {
 
     // Add filters
     const filters = [];
-    if (category && category !== "") {
+    if (category && category !== "all") {
       filters.push(`subject:${category}`);
     }
-    if (language && language !== "") {
+    if (language && language !== "all") {
       filters.push(`langRestrict=${language}`);
     }
 
