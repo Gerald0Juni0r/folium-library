@@ -210,9 +210,23 @@ export function HeaderBiblioteca({
                     <div className="py-6 border-b border-folium-silver dark:border-folium-silver/30">
                       <div className="flex items-center space-x-3">
                         <Avatar className="h-12 w-12">
-                          <AvatarFallback className="bg-folium-sage text-white text-lg">
-                            {getInitials(usuario.nome)}
-                          </AvatarFallback>
+                          {usuario.foto ? (
+                            usuario.foto.startsWith("data:") ||
+                            usuario.foto.startsWith("http") ? (
+                              <AvatarImage
+                                src={usuario.foto}
+                                alt="Foto do perfil"
+                              />
+                            ) : (
+                              <div className="flex items-center justify-center h-full w-full text-2xl bg-folium-sage/10">
+                                {usuario.foto}
+                              </div>
+                            )
+                          ) : (
+                            <AvatarFallback className="bg-folium-sage text-white text-lg">
+                              {getInitials(usuario.nome)}
+                            </AvatarFallback>
+                          )}
                         </Avatar>
                         <div>
                           <p className="font-medium text-folium-ink dark:text-folium-cream">
