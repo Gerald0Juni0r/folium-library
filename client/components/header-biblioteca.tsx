@@ -192,66 +192,69 @@ export function HeaderBiblioteca({
                   side="right"
                   className="w-80 bg-folium-cream dark:bg-folium-steel border-folium-silver dark:border-folium-silver/30 h-full max-h-screen overflow-hidden"
                 >
-                  <div className="flex flex-col h-full min-h-0">
-                    {/* Header do Menu */}
-                    <div className="pb-4 border-b border-folium-silver dark:border-folium-silver/30">
+                  <div className="flex flex-col h-full min-h-0 max-h-screen">
+                    {/* Header do Menu - Fixo */}
+                    <div className="flex-shrink-0 pb-4 border-b border-folium-silver dark:border-folium-silver/30">
                       <h2 className="text-lg font-serif font-semibold text-folium-ink dark:text-folium-cream">
                         Menu
                       </h2>
                     </div>
 
-                    {/* Perfil do Usuário */}
-                    <div className="py-6 border-b border-folium-silver dark:border-folium-silver/30">
-                      <div className="flex items-center space-x-3">
-                        <Avatar className="h-12 w-12">
-                          {usuario.foto ? (
-                            usuario.foto.startsWith("data:") ||
-                            usuario.foto.startsWith("http") ? (
-                              <AvatarImage
-                                src={usuario.foto}
-                                alt="Foto do perfil"
-                              />
+                    {/* Área Scrollável do Meio */}
+                    <div className="flex-1 min-h-0 overflow-y-auto">
+                      {/* Perfil do Usuário */}
+                      <div className="py-6 border-b border-folium-silver dark:border-folium-silver/30">
+                        <div className="flex items-center space-x-3">
+                          <Avatar className="h-12 w-12">
+                            {usuario.foto ? (
+                              usuario.foto.startsWith("data:") ||
+                              usuario.foto.startsWith("http") ? (
+                                <AvatarImage
+                                  src={usuario.foto}
+                                  alt="Foto do perfil"
+                                />
+                              ) : (
+                                <div className="flex items-center justify-center h-full w-full text-2xl bg-folium-sage/10">
+                                  {usuario.foto}
+                                </div>
+                              )
                             ) : (
-                              <div className="flex items-center justify-center h-full w-full text-2xl bg-folium-sage/10">
-                                {usuario.foto}
-                              </div>
-                            )
-                          ) : (
-                            <AvatarFallback className="bg-folium-sage text-white text-lg">
-                              {getInitials(usuario.nome)}
-                            </AvatarFallback>
-                          )}
-                        </Avatar>
-                        <div>
-                          <p className="font-medium text-folium-ink dark:text-folium-cream">
-                            {usuario.nome}
-                          </p>
-                          <p className="text-sm text-muted-foreground">
-                            {usuario.email}
-                          </p>
+                              <AvatarFallback className="bg-folium-sage text-white text-lg">
+                                {getInitials(usuario.nome)}
+                              </AvatarFallback>
+                            )}
+                          </Avatar>
+                          <div>
+                            <p className="font-medium text-folium-ink dark:text-folium-cream">
+                              {usuario.nome}
+                            </p>
+                            <p className="text-sm text-muted-foreground">
+                              {usuario.email}
+                            </p>
+                          </div>
                         </div>
+                      </div>
+
+                      {/* Menu Items */}
+                      <div className="py-6">
+                        <nav className="space-y-2">
+                          <Button
+                            variant="ghost"
+                            className="w-full justify-start text-left hover:bg-folium-parchment dark:hover:bg-folium-silver/20"
+                            onClick={() => {
+                              navigate("/perfil");
+                              setMenuMobileAberto(false);
+                            }}
+                          >
+                            <User className="mr-3 h-5 w-5" />
+                            <span>Meu Perfil</span>
+                          </Button>
+                        </nav>
                       </div>
                     </div>
 
-                    {/* Menu Items */}
-                    <div className="flex-1 py-6">
-                      <nav className="space-y-2">
-                        <Button
-                          variant="ghost"
-                          className="w-full justify-start text-left hover:bg-folium-parchment dark:hover:bg-folium-silver/20"
-                          onClick={() => {
-                            navigate("/perfil");
-                            setMenuMobileAberto(false);
-                          }}
-                        >
-                          <User className="mr-3 h-5 w-5" />
-                          <span>Meu Perfil</span>
-                        </Button>
-                      </nav>
-                    </div>
-
-                    {/* Logout */}
-                    <div className="border-t border-folium-silver dark:border-folium-silver/30 pt-4">
+                    {/* Logout - Fixo na parte inferior */}
+                    <div className="flex-shrink-0 border-t border-folium-silver dark:border-folium-silver/30 pt-4 pb-6">
                       <Button
                         variant="ghost"
                         className="w-full justify-start text-left text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 hover:bg-red-50 dark:hover:bg-red-950/20"
