@@ -35,7 +35,7 @@ const avatarsPredefinidos = [
   "📖",
   "📝",
   "✨",
-  "🎯",
+  "��",
   "🚀",
 ];
 
@@ -304,19 +304,19 @@ export default function Perfil() {
 
               <Separator className="bg-folium-silver dark:bg-folium-silver/30" />
 
-              {/* Botões de Ação */}
-              <div className="flex gap-4 pt-4">
+              {/* Botões de Ação - Fixos na parte inferior em mobile */}
+              <div className="flex flex-col sm:flex-row gap-4 pt-4 pb-safe-area-inset-bottom">
                 <Button
                   onClick={() => navigate("/biblioteca")}
                   variant="outline"
-                  className="flex-1 bg-background hover:bg-folium-parchment dark:hover:bg-folium-silver/20 border-folium-silver dark:border-folium-silver/30"
+                  className="flex-1 bg-background hover:bg-folium-parchment dark:hover:bg-folium-silver/20 border-folium-silver dark:border-folium-silver/30 min-h-[44px]"
                 >
                   Cancelar
                 </Button>
                 <Button
                   onClick={handleSave}
                   disabled={isLoading}
-                  className="flex-1 bg-folium-sage hover:bg-folium-sage/90 text-white"
+                  className="flex-1 bg-folium-sage hover:bg-folium-sage/90 text-white min-h-[44px]"
                 >
                   {isLoading ? (
                     "Salvando..."
