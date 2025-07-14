@@ -10,6 +10,7 @@ interface User {
   id: string;
   nome: string;
   email: string;
+  foto?: string;
 }
 
 interface AuthContextType {
@@ -17,6 +18,7 @@ interface AuthContextType {
   isLoading: boolean;
   login: (email: string, senha: string) => Promise<boolean>;
   cadastrar: (nome: string, email: string, senha: string) => Promise<boolean>;
+  updateUsuario: (dadosAtualizados: User) => Promise<boolean>;
   logout: () => void;
 }
 
