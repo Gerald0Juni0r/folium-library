@@ -127,10 +127,10 @@ export default function Perfil() {
     return null;
   }
 
-  return (
-    <div className="min-h-screen bg-background">
+    return (
+    <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
-      <header className="border-b border-border bg-background/95 backdrop-blur">
+      <header className="flex-shrink-0 border-b border-border bg-background/95 backdrop-blur">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center space-x-4">
             <Button
@@ -142,7 +142,7 @@ export default function Perfil() {
               <ArrowLeft className="h-5 w-5" />
             </Button>
             <div>
-              <h1 className="text-2xl font-serif font-semibold text-folium-ink dark:text-folium-cream">
+              <h1 className="text-xl md:text-2xl font-serif font-semibold text-folium-ink dark:text-folium-cream">
                 Meu Perfil
               </h1>
               <p className="text-sm text-muted-foreground">
@@ -153,8 +153,9 @@ export default function Perfil() {
         </div>
       </header>
 
-      {/* Conteúdo */}
-      <main className="container mx-auto px-4 py-8 max-w-2xl">
+      {/* Conteúdo Scrollável */}
+      <main className="flex-1 overflow-y-auto">
+        <div className="container mx-auto px-4 py-6 md:py-8 max-w-2xl min-h-full"  >
         <Card className="bg-folium-cream dark:bg-folium-steel border-folium-silver dark:border-folium-silver/30">
           <CardHeader>
             <CardTitle className="text-folium-ink dark:text-folium-cream">
