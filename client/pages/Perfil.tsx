@@ -127,7 +127,7 @@ export default function Perfil() {
     return null;
   }
 
-    return (
+  return (
     <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
       <header className="flex-shrink-0 border-b border-border bg-background/95 backdrop-blur">
@@ -153,183 +153,184 @@ export default function Perfil() {
         </div>
       </header>
 
-            {/* Conteúdo Scrollável */}
+      {/* Conteúdo Scrollável */}
       <main className="flex-1 overflow-y-auto">
         <div className="container mx-auto px-4 py-6 md:py-8 max-w-2xl min-h-full">
           <Card className="bg-folium-cream dark:bg-folium-steel border-folium-silver dark:border-folium-silver/30">
-          <CardHeader>
-            <CardTitle className="text-folium-ink dark:text-folium-cream">
-              Informações do Perfil
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            {/* Seção da Foto */}
-            <div className="text-center space-y-4">
-              <div className="flex justify-center">
-                <div className="relative">
-                  <Avatar className="h-24 w-24">
-                    {fotoAtual ? (
-                      <AvatarImage src={fotoAtual} alt="Foto do perfil" />
-                    ) : avatarSelecionado ? (
-                      <div className="flex items-center justify-center h-full w-full text-4xl bg-folium-sage/10">
-                        {avatarSelecionado}
-                      </div>
-                    ) : (
-                      <AvatarFallback className="bg-folium-sage text-white text-2xl">
-                        {getInitials(formData.nome)}
-                      </AvatarFallback>
-                    )}
-                  </Avatar>
-                  <Button
-                    size="icon"
-                    variant="outline"
-                    className="absolute -bottom-2 -right-2 h-8 w-8 rounded-full bg-background border-folium-silver dark:border-folium-silver/30"
-                    onClick={() => fileInputRef.current?.click()}
-                  >
-                    <Camera className="h-4 w-4" />
-                  </Button>
+            <CardHeader>
+              <CardTitle className="text-folium-ink dark:text-folium-cream">
+                Informações do Perfil
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              {/* Seção da Foto */}
+              <div className="text-center space-y-4">
+                <div className="flex justify-center">
+                  <div className="relative">
+                    <Avatar className="h-24 w-24">
+                      {fotoAtual ? (
+                        <AvatarImage src={fotoAtual} alt="Foto do perfil" />
+                      ) : avatarSelecionado ? (
+                        <div className="flex items-center justify-center h-full w-full text-4xl bg-folium-sage/10">
+                          {avatarSelecionado}
+                        </div>
+                      ) : (
+                        <AvatarFallback className="bg-folium-sage text-white text-2xl">
+                          {getInitials(formData.nome)}
+                        </AvatarFallback>
+                      )}
+                    </Avatar>
+                    <Button
+                      size="icon"
+                      variant="outline"
+                      className="absolute -bottom-2 -right-2 h-8 w-8 rounded-full bg-background border-folium-silver dark:border-folium-silver/30"
+                      onClick={() => fileInputRef.current?.click()}
+                    >
+                      <Camera className="h-4 w-4" />
+                    </Button>
+                  </div>
                 </div>
-              </div>
 
-              <div className="space-y-2">
-                <p className="text-sm font-medium text-folium-ink dark:text-folium-cream">
-                  Foto do Perfil
-                </p>
-                <div className="flex flex-wrap justify-center gap-2">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => fileInputRef.current?.click()}
-                    className="bg-background hover:bg-folium-parchment dark:hover:bg-folium-silver/20 border-folium-silver dark:border-folium-silver/30"
-                  >
-                    <Upload className="h-4 w-4 mr-2" />
-                    Upload
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => {
-                      setFotoAtual(null);
-                      setAvatarSelecionado(null);
-                    }}
-                    className="bg-background hover:bg-folium-parchment dark:hover:bg-folium-silver/20 border-folium-silver dark:border-folium-silver/30"
-                  >
-                    Remover
-                  </Button>
+                <div className="space-y-2">
+                  <p className="text-sm font-medium text-folium-ink dark:text-folium-cream">
+                    Foto do Perfil
+                  </p>
+                  <div className="flex flex-wrap justify-center gap-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => fileInputRef.current?.click()}
+                      className="bg-background hover:bg-folium-parchment dark:hover:bg-folium-silver/20 border-folium-silver dark:border-folium-silver/30"
+                    >
+                      <Upload className="h-4 w-4 mr-2" />
+                      Upload
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => {
+                        setFotoAtual(null);
+                        setAvatarSelecionado(null);
+                      }}
+                      className="bg-background hover:bg-folium-parchment dark:hover:bg-folium-silver/20 border-folium-silver dark:border-folium-silver/30"
+                    >
+                      Remover
+                    </Button>
+                  </div>
                 </div>
-              </div>
 
-              <input
-                ref={fileInputRef}
-                type="file"
-                accept="image/*"
-                onChange={handleImageUpload}
-                className="hidden"
-              />
-            </div>
-
-            {/* Avatars Predefinidos */}
-            <div className="space-y-3">
-              <Label className="text-sm font-medium text-folium-ink dark:text-folium-cream">
-                Ou escolha um avatar:
-              </Label>
-              <div className="grid grid-cols-6 gap-2">
-                {avatarsPredefinidos.map((emoji, index) => (
-                  <Button
-                    key={index}
-                    variant="outline"
-                    size="icon"
-                    onClick={() => handleAvatarSelect(emoji)}
-                    className={`h-12 w-12 text-2xl ${
-                      avatarSelecionado === emoji
-                        ? "ring-2 ring-folium-sage bg-folium-sage/10"
-                        : "bg-background hover:bg-folium-parchment dark:hover:bg-folium-silver/20"
-                    } border-folium-silver dark:border-folium-silver/30`}
-                  >
-                    {emoji}
-                    {avatarSelecionado === emoji && (
-                      <div className="absolute -top-1 -right-1 h-4 w-4 bg-folium-sage rounded-full flex items-center justify-center">
-                        <Check className="h-3 w-3 text-white" />
-                      </div>
-                    )}
-                  </Button>
-                ))}
-              </div>
-            </div>
-
-            <Separator className="bg-folium-silver dark:bg-folium-silver/30" />
-
-            {/* Informações Pessoais */}
-            <div className="space-y-4">
-              <div className="space-y-2">
-                <Label
-                  htmlFor="nome"
-                  className="text-sm font-medium text-folium-ink dark:text-folium-cream flex items-center"
-                >
-                  <User className="h-4 w-4 mr-2 text-folium-sage" />
-                  Nome Completo
-                </Label>
-                <Input
-                  id="nome"
-                  name="nome"
-                  type="text"
-                  placeholder="Seu nome completo"
-                  value={formData.nome}
-                  onChange={handleChange}
-                  className="bg-background border-folium-silver dark:border-folium-silver/30 focus:border-folium-sage dark:focus:border-folium-azure"
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageUpload}
+                  className="hidden"
                 />
               </div>
 
-              <div className="space-y-2">
-                <Label
-                  htmlFor="email"
-                  className="text-sm font-medium text-folium-ink dark:text-folium-cream flex items-center"
-                >
-                  <Mail className="h-4 w-4 mr-2 text-folium-sage" />
-                  Email
+              {/* Avatars Predefinidos */}
+              <div className="space-y-3">
+                <Label className="text-sm font-medium text-folium-ink dark:text-folium-cream">
+                  Ou escolha um avatar:
                 </Label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  disabled
-                  className="bg-muted border-folium-silver dark:border-folium-silver/30 cursor-not-allowed"
-                />
-                <p className="text-xs text-muted-foreground">
-                  O email não pode ser alterado
-                </p>
+                <div className="grid grid-cols-6 gap-2">
+                  {avatarsPredefinidos.map((emoji, index) => (
+                    <Button
+                      key={index}
+                      variant="outline"
+                      size="icon"
+                      onClick={() => handleAvatarSelect(emoji)}
+                      className={`h-12 w-12 text-2xl ${
+                        avatarSelecionado === emoji
+                          ? "ring-2 ring-folium-sage bg-folium-sage/10"
+                          : "bg-background hover:bg-folium-parchment dark:hover:bg-folium-silver/20"
+                      } border-folium-silver dark:border-folium-silver/30`}
+                    >
+                      {emoji}
+                      {avatarSelecionado === emoji && (
+                        <div className="absolute -top-1 -right-1 h-4 w-4 bg-folium-sage rounded-full flex items-center justify-center">
+                          <Check className="h-3 w-3 text-white" />
+                        </div>
+                      )}
+                    </Button>
+                  ))}
+                </div>
               </div>
-            </div>
 
-            <Separator className="bg-folium-silver dark:bg-folium-silver/30" />
+              <Separator className="bg-folium-silver dark:bg-folium-silver/30" />
 
-            {/* Botões de Ação */}
-            <div className="flex gap-4 pt-4">
-              <Button
-                onClick={() => navigate("/biblioteca")}
-                variant="outline"
-                className="flex-1 bg-background hover:bg-folium-parchment dark:hover:bg-folium-silver/20 border-folium-silver dark:border-folium-silver/30"
-              >
-                Cancelar
-              </Button>
-              <Button
-                onClick={handleSave}
-                disabled={isLoading}
-                className="flex-1 bg-folium-sage hover:bg-folium-sage/90 text-white"
-              >
-                {isLoading ? (
-                  "Salvando..."
-                ) : (
-                  <>
-                    <Save className="h-4 w-4 mr-2" />
-                    Salvar
-                  </>
-                )}
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
+              {/* Informações Pessoais */}
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="nome"
+                    className="text-sm font-medium text-folium-ink dark:text-folium-cream flex items-center"
+                  >
+                    <User className="h-4 w-4 mr-2 text-folium-sage" />
+                    Nome Completo
+                  </Label>
+                  <Input
+                    id="nome"
+                    name="nome"
+                    type="text"
+                    placeholder="Seu nome completo"
+                    value={formData.nome}
+                    onChange={handleChange}
+                    className="bg-background border-folium-silver dark:border-folium-silver/30 focus:border-folium-sage dark:focus:border-folium-azure"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="email"
+                    className="text-sm font-medium text-folium-ink dark:text-folium-cream flex items-center"
+                  >
+                    <Mail className="h-4 w-4 mr-2 text-folium-sage" />
+                    Email
+                  </Label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    disabled
+                    className="bg-muted border-folium-silver dark:border-folium-silver/30 cursor-not-allowed"
+                  />
+                  <p className="text-xs text-muted-foreground">
+                    O email não pode ser alterado
+                  </p>
+                </div>
+              </div>
+
+              <Separator className="bg-folium-silver dark:bg-folium-silver/30" />
+
+              {/* Botões de Ação */}
+              <div className="flex gap-4 pt-4">
+                <Button
+                  onClick={() => navigate("/biblioteca")}
+                  variant="outline"
+                  className="flex-1 bg-background hover:bg-folium-parchment dark:hover:bg-folium-silver/20 border-folium-silver dark:border-folium-silver/30"
+                >
+                  Cancelar
+                </Button>
+                <Button
+                  onClick={handleSave}
+                  disabled={isLoading}
+                  className="flex-1 bg-folium-sage hover:bg-folium-sage/90 text-white"
+                >
+                  {isLoading ? (
+                    "Salvando..."
+                  ) : (
+                    <>
+                      <Save className="h-4 w-4 mr-2" />
+                      Salvar
+                    </>
+                  )}
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
       </main>
     </div>
   );
