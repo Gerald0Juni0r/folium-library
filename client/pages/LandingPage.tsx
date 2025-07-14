@@ -23,25 +23,49 @@ export default function LandingPage() {
               <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-folium-sage text-white">
                 <BookOpen className="h-5 w-5" />
               </div>
-              <h1 className="text-2xl font-serif font-semibold text-folium-ink dark:text-folium-cream">
+              <h1 className="text-xl md:text-2xl font-serif font-semibold text-folium-ink dark:text-folium-cream">
                 Folium
               </h1>
             </div>
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2 md:space-x-4">
               <ThemeToggle />
-              <Link to="/login">
-                <Button
-                  variant="ghost"
-                  className="text-folium-ink dark:text-folium-cream hover:bg-folium-parchment dark:hover:bg-folium-silver/20"
-                >
-                  Entrar
-                </Button>
-              </Link>
-              <Link to="/cadastro">
-                <Button className="bg-folium-sage hover:bg-folium-sage/90 text-white">
-                  Criar conta
-                </Button>
-              </Link>
+              <div className="hidden sm:flex items-center space-x-2">
+                <Link to="/login">
+                  <Button
+                    variant="ghost"
+                    className="text-folium-ink dark:text-folium-cream hover:bg-folium-parchment dark:hover:bg-folium-silver/20"
+                  >
+                    Entrar
+                  </Button>
+                </Link>
+                <Link to="/cadastro">
+                  <Button className="bg-folium-sage hover:bg-folium-sage/90 text-white">
+                    Criar conta
+                  </Button>
+                </Link>
+              </div>
+              {/* Menu Mobile */}
+              <div className="sm:hidden">
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" size="icon">
+                      <Menu className="h-5 w-5" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="w-48">
+                    <DropdownMenuItem asChild>
+                      <Link to="/login" className="cursor-pointer">
+                        Entrar
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link to="/cadastro" className="cursor-pointer">
+                        Criar conta
+                      </Link>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
             </div>
           </div>
         </div>
