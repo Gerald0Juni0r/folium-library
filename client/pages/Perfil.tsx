@@ -155,7 +155,7 @@ export default function Perfil() {
 
       {/* Conteúdo Scrollável */}
       <main className="flex-1 overflow-y-auto">
-        <div className="container mx-auto px-4 py-6 md:py-8 max-w-2xl min-h-full"  >
+                <div className="container mx-auto px-4 py-6 md:py-8 max-w-2xl min-h-full">
         <Card className="bg-folium-cream dark:bg-folium-steel border-folium-silver dark:border-folium-silver/30">
           <CardHeader>
             <CardTitle className="text-folium-ink dark:text-folium-cream">
