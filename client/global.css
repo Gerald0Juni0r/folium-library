@@ -157,4 +157,27 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+
+  /* Mobile viewport adjustments */
+  .min-h-screen {
+    min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport height for mobile */
+  }
+
+  /* Safe area adjustments for mobile */
+  .pb-safe-area-inset-bottom {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+
+  /* Touch-friendly sizing */
+  .min-h-touch {
+    min-height: 44px;
+  }
+
+  @supports (-webkit-touch-callout: none) {
+    /* iOS specific adjustments */
+    .ios-adjust {
+      padding-bottom: max(1rem, env(safe-area-inset-bottom));
+    }
+  }
 }
