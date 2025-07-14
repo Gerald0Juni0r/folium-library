@@ -194,17 +194,10 @@ export function HeaderBiblioteca({
                 >
                   <div className="flex flex-col h-full">
                     {/* Header do Menu */}
-                    <div className="flex items-center justify-between pb-4 border-b border-folium-silver dark:border-folium-silver/30">
+                    <div className="pb-4 border-b border-folium-silver dark:border-folium-silver/30">
                       <h2 className="text-lg font-serif font-semibold text-folium-ink dark:text-folium-cream">
                         Menu
                       </h2>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={() => setMenuMobileAberto(false)}
-                      >
-                        <X className="h-5 w-5" />
-                      </Button>
                     </div>
 
                     {/* Perfil do Usuário */}
