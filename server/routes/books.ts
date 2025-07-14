@@ -87,30 +87,27 @@ export const searchBooks: RequestHandler = async (req, res) => {
 
     const data: GoogleBooksResponse = await response.json();
 
-    // Transform the data to match our interface
-    const books =
+    // Transform the data to match our interface (Portuguese field names)
+    const livros =
       data.items?.map((item) => ({
         id: item.id,
-        title: item.volumeInfo.title || "Unknown Title",
-        authors: item.volumeInfo.authors || [],
-        description: item.volumeInfo.description,
-        thumbnail: item.volumeInfo.imageLinks?.thumbnail?.replace(
-          "http:",
-          "https:",
-        ),
-        categories: item.volumeInfo.categories,
-        publishedDate: item.volumeInfo.publishedDate,
-        pageCount: item.volumeInfo.pageCount,
-        averageRating: item.volumeInfo.averageRating,
-        language: item.volumeInfo.language,
-        previewLink: item.volumeInfo.previewLink,
+        titulo: item.volumeInfo.title || "Título Desconhecido",
+        autores: item.volumeInfo.authors || [],
+        descricao: item.volumeInfo.description,
+        capa: item.volumeInfo.imageLinks?.thumbnail?.replace("http:", "https:"),
+        categorias: item.volumeInfo.categories,
+        dataPublicacao: item.volumeInfo.publishedDate,
+        numeroPaginas: item.volumeInfo.pageCount,
+        avaliacaoMedia: item.volumeInfo.averageRating,
+        idioma: item.volumeInfo.language,
+        linkPreview: item.volumeInfo.previewLink,
       })) || [];
 
     res.json({
-      books,
-      totalItems: data.totalItems || 0,
-      currentPage: Math.floor(Number(startIndex) / Number(maxResults)) + 1,
-      totalPages: Math.ceil((data.totalItems || 0) / Number(maxResults)),
+      livros,
+      totalItens: data.totalItems || 0,
+      paginaAtual: Math.floor(Number(startIndex) / Number(maxResults)) + 1,
+      totalPaginas: Math.ceil((data.totalItems || 0) / Number(maxResults)),
     });
   } catch (error) {
     console.error("Books search error:", error);
