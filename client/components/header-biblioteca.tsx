@@ -238,7 +238,7 @@ export function HeaderBiblioteca({
                       <nav className="space-y-2">
                         <Button
                           variant="ghost"
-                          className="w-full justify-start text-left"
+                          className="w-full justify-start text-left hover:bg-folium-parchment dark:hover:bg-folium-silver/20"
                           onClick={() => {
                             navigate("/perfil");
                             setMenuMobileAberto(false);
@@ -246,14 +246,6 @@ export function HeaderBiblioteca({
                         >
                           <User className="mr-3 h-5 w-5" />
                           <span>Meu Perfil</span>
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          className="w-full justify-start text-left"
-                          onClick={() => setMenuMobileAberto(false)}
-                        >
-                          <BookOpen className="mr-3 h-5 w-5" />
-                          <span>Minhas Listas</span>
                         </Button>
                       </nav>
                     </div>
