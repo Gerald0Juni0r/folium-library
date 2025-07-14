@@ -1,0 +1,123 @@
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
+
+interface User {
+  id: string;
+  nome: string;
+  email: string;
+}
+
+interface AuthContextType {
+  usuario: User | null;
+  isLoading: boolean;
+  login: (email: string, senha: string) => Promise<boolean>;
+  cadastrar: (nome: string, email: string, senha: string) => Promise<boolean>;
+  logout: () => void;
+}
+
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
+
+interface AuthProviderProps {
+  children: ReactNode;
+}
+
+export function AuthProvider({ children }: AuthProviderProps) {
+  const [usuario, setUsuario] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Verificar se há usuário salvo no localStorage
+    const usuarioSalvo = localStorage.getItem("folium-usuario");
+    if (usuarioSalvo) {
+      try {
+        setUsuario(JSON.parse(usuarioSalvo));
+      } catch (error) {
+        console.error("Erro ao carregar usuário:", error);
+        localStorage.removeItem("folium-usuario");
+      }
+    }
+    setIsLoading(false);
+  }, []);
+
+  const login = async (email: string, senha: string): Promise<boolean> => {
+    try {
+      // Simular uma chamada de API
+      // Em produção, isso seria uma chamada real para o backend
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      // Para demonstração, aceitar qualquer email/senha
+      if (email && senha) {
+        const novoUsuario: User = {
+          id: Date.now().toString(),
+          nome: email.split("@")[0],
+          email: email,
+        };
+
+        setUsuario(novoUsuario);
+        localStorage.setItem("folium-usuario", JSON.stringify(novoUsuario));
+        return true;
+      }
+
+      return false;
+    } catch (error) {
+      console.error("Erro no login:", error);
+      return false;
+    }
+  };
+
+  const cadastrar = async (
+    nome: string,
+    email: string,
+    senha: string,
+  ): Promise<boolean> => {
+    try {
+      // Simular uma chamada de API
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      // Para demonstração, aceitar qualquer dados válidos
+      if (nome && email && senha) {
+        const novoUsuario: User = {
+          id: Date.now().toString(),
+          nome: nome,
+          email: email,
+        };
+
+        setUsuario(novoUsuario);
+        localStorage.setItem("folium-usuario", JSON.stringify(novoUsuario));
+        return true;
+      }
+
+      return false;
+    } catch (error) {
+      console.error("Erro no cadastro:", error);
+      return false;
+    }
+  };
+
+  const logout = () => {
+    setUsuario(null);
+    localStorage.removeItem("folium-usuario");
+    localStorage.removeItem("folium-listas");
+  };
+
+  return (
+    <AuthContext.Provider
+      value={{ usuario, isLoading, login, cadastrar, logout }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
+}
+
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (context === undefined) {
+    throw new Error("useAuth deve ser usado dentro de um AuthProvider");
+  }
+  return context;
+};
