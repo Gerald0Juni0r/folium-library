@@ -52,6 +52,45 @@ export function BookListsProvider({ children }: BookListsProviderProps) {
         } catch (error) {
           console.error("Erro ao carregar listas:", error);
         }
+      } else if (usuario.email === "folium@folium.com") {
+        // Adicionar listas de exemplo para o usuário teste
+        const listasExemplo = {
+          "quero-ler": [
+            {
+              id: "exemplo1",
+              titulo: "O Hobbit",
+              autores: ["J.R.R. Tolkien"],
+              capa: "https://books.google.com/books/content?id=hFfhrCWiLSMC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+              dataAdicao: new Date().toISOString(),
+            },
+            {
+              id: "exemplo2",
+              titulo: "Sapiens",
+              autores: ["Yuval Noah Harari"],
+              capa: "https://books.google.com/books/content?id=FmyBAwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+              dataAdicao: new Date().toISOString(),
+            },
+          ],
+          lido: [
+            {
+              id: "exemplo3",
+              titulo: "1984",
+              autores: ["George Orwell"],
+              capa: "https://books.google.com/books/content?id=kotPYEqx7kMC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+              dataAdicao: new Date().toISOString(),
+            },
+          ],
+          favorito: [
+            {
+              id: "exemplo4",
+              titulo: "Dom Casmurro",
+              autores: ["Machado de Assis"],
+              capa: "https://books.google.com/books/content?id=K8VGAAAAYAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+              dataAdicao: new Date().toISOString(),
+            },
+          ],
+        };
+        setListas(listasExemplo);
       }
     } else {
       // Limpar listas quando usuário fizer logout
