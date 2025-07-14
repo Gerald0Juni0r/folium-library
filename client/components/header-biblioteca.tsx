@@ -245,7 +245,10 @@ export function HeaderBiblioteca({
                         <Button
                           variant="ghost"
                           className="w-full justify-start text-left"
-                          onClick={() => setMenuMobileAberto(false)}
+                          onClick={() => {
+                            navigate("/perfil");
+                            setMenuMobileAberto(false);
+                          }}
                         >
                           <User className="mr-3 h-5 w-5" />
                           <span>Meu Perfil</span>
