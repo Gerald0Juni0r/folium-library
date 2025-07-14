@@ -79,6 +79,17 @@ export default function Cadastro() {
           </p>
         </div>
 
+        {/* Aviso de Teste */}
+        <div className="bg-folium-azure/10 border border-folium-azure/20 rounded-lg p-4">
+          <h3 className="font-medium text-folium-ink dark:text-folium-cream mb-2 flex items-center">
+            💡 Dica de Teste
+          </h3>
+          <p className="text-sm text-muted-foreground">
+            Já existe uma conta de teste? Use <strong>folium@folium.com</strong>{" "}
+            na página de login.
+          </p>
+        </div>
+
         {/* Formulário */}
         <Card className="bg-folium-cream dark:bg-folium-steel border-folium-silver dark:border-folium-silver/30">
           <CardHeader>
