@@ -108,9 +108,9 @@ export default function Index() {
 
   const handleClearFilters = () => {
     setFilters({
-      category: "",
-      language: "",
-      publishedDate: "",
+      category: "all",
+      language: "all",
+      publishedDate: "all",
     });
   };
 
