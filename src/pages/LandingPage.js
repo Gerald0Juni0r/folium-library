@@ -86,26 +86,6 @@ const LandingPage = () => {
               <Menu size={20} />
             </button>
           </div>
-
-          {/* Mobile Menu */}
-          {menuOpen && (
-            <div className="mobile-menu">
-              <Link
-                to="/login"
-                className="mobile-menu-item"
-                onClick={() => setMenuOpen(false)}
-              >
-                Entrar
-              </Link>
-              <Link
-                to="/cadastro"
-                className="mobile-menu-item"
-                onClick={() => setMenuOpen(false)}
-              >
-                Criar conta
-              </Link>
-            </div>
-          )}
         </div>
       </header>
 
