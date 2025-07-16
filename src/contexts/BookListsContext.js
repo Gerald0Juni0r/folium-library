@@ -14,7 +14,7 @@ export const useBookLists = () => {
 };
 
 export const BookListsProvider = ({ children }) => {
-  const { usuario } = useAuth();
+  const { user } = useAuth();
   const [listas, setListas] = useState({
     "quero-ler": [],
     lido: [],
