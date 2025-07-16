@@ -26,8 +26,10 @@ const Biblioteca = () => {
   // States
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [popularBooks, setPopularBooks] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
+  const [isLoadingPopular, setIsLoadingPopular] = useState(true);
   const [activeTab, setActiveTab] = useState(
     searchParams.get("tab") || "search",
   );
