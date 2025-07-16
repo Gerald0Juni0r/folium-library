@@ -416,7 +416,7 @@ const Biblioteca = () => {
                 {isLoadingPopular ? (
                   <div className="loading-state">
                     <Loader size={32} />
-                    <p>Carregando livros populares...</p>
+                    <p>Carregando bestsellers...</p>
                   </div>
                 ) : popularBooks.length > 0 ? (
                   <>
