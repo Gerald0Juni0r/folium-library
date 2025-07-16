@@ -121,7 +121,7 @@
   display: none;
   background: none;
   border: none;
-  padding: var(--spacing-sm);
+  padding: var(--spacing-md);
   color: var(--text-primary);
   cursor: pointer;
   border-radius: var(--radius-md);
