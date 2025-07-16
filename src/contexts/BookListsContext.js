@@ -79,11 +79,11 @@ export const BookListsProvider = ({ children }) => {
         favorito: [],
       });
     }
-  }, [usuario]);
+  }, [user]);
 
   // Salvar listas no localStorage sempre que mudarem
   useEffect(() => {
-    if (usuario) {
+    if (user) {
       localStorage.setItem("folium-listas", JSON.stringify(listas));
     }
   }, [listas, usuario]);
