@@ -199,7 +199,6 @@
 
 /* Responsive Design */
 @media (max-width: 1024px) {
-  .nav-desktop,
   .user-actions-desktop {
     display: none;
   }
