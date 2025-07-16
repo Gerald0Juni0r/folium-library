@@ -63,7 +63,7 @@ const Biblioteca = () => {
         setPopularBooks(data.items);
       }
     } catch (error) {
-      console.error("Erro ao carregar livros populares:", error);
+      console.error("Erro ao carregar bestsellers:", error);
     } finally {
       setIsLoadingPopular(false);
     }
