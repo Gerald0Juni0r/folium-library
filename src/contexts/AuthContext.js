@@ -11,15 +11,15 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }) => {
-  const [usuario, setUsuario] = useState(null);
+  const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // Verificar se há usuário salvo no localStorage
-    const usuarioSalvo = localStorage.getItem("folium-usuario");
-    if (usuarioSalvo) {
+    const userSaved = localStorage.getItem("folium-usuario");
+    if (userSaved) {
       try {
-        setUsuario(JSON.parse(usuarioSalvo));
+        setUser(JSON.parse(userSaved));
       } catch (error) {
         console.error("Erro ao carregar usuário:", error);
         localStorage.removeItem("folium-usuario");
@@ -35,29 +35,29 @@ export const AuthProvider = ({ children }) => {
 
       // Credenciais de teste específicas
       if (email === "folium@folium.com" && senha === "123456") {
-        const usuarioTeste = {
+        const testUser = {
           id: "1",
           nome: "Usuário Teste",
           email: "folium@folium.com",
           foto: null,
         };
 
-        setUsuario(usuarioTeste);
-        localStorage.setItem("folium-usuario", JSON.stringify(usuarioTeste));
+        setUser(testUser);
+        localStorage.setItem("folium-usuario", JSON.stringify(testUser));
         return { success: true };
       }
 
       // Para demonstração, aceitar qualquer outro email/senha válidos
       if (email && senha && senha.length >= 6) {
-        const novoUsuario = {
+        const newUser = {
           id: Date.now().toString(),
           nome: email.split("@")[0],
           email: email,
           foto: null,
         };
 
-        setUsuario(novoUsuario);
-        localStorage.setItem("folium-usuario", JSON.stringify(novoUsuario));
+        setUser(newUser);
+        localStorage.setItem("folium-usuario", JSON.stringify(newUser));
         return { success: true };
       }
 
@@ -74,15 +74,15 @@ export const AuthProvider = ({ children }) => {
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
       if (nome && email && senha) {
-        const novoUsuario = {
+        const newUser = {
           id: Date.now().toString(),
           nome: nome,
           email: email,
           foto: null,
         };
 
-        setUsuario(novoUsuario);
-        localStorage.setItem("folium-usuario", JSON.stringify(novoUsuario));
+        setUser(newUser);
+        localStorage.setItem("folium-usuario", JSON.stringify(newUser));
         return { success: true };
       }
 
@@ -93,13 +93,13 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const updateUsuario = async (dadosAtualizados) => {
+  const updateUser = async (updatedData) => {
     try {
       // Simular chamada de API
       await new Promise((resolve) => setTimeout(resolve, 500));
 
-      setUsuario(dadosAtualizados);
-      localStorage.setItem("folium-usuario", JSON.stringify(dadosAtualizados));
+      setUser(updatedData);
+      localStorage.setItem("folium-usuario", JSON.stringify(updatedData));
       return { success: true };
     } catch (error) {
       console.error("Erro ao atualizar usuário:", error);
@@ -108,19 +108,19 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
-    setUsuario(null);
+    setUser(null);
     localStorage.removeItem("folium-usuario");
     localStorage.removeItem("folium-listas");
   };
 
   const value = {
-    usuario,
+    user,
     isLoading,
     login,
     cadastrar,
-    updateUsuario,
+    updateUser,
     logout,
-    isAuthenticated: !!usuario,
+    isAuthenticated: !!user,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
