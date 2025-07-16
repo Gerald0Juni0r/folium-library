@@ -20,6 +20,7 @@ import "./Perfil.css";
 
 const Perfil = () => {
   const { user, updateUser, logout } = useAuth();
+  const { listas } = useBookLists();
   const navigate = useNavigate();
   const fileInputRef = useRef(null);
 
