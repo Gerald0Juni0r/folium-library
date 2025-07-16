@@ -8,7 +8,7 @@ const Biblioteca = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!isLoading && !usuario) {
+    if (!isLoading && !user) {
       navigate("/login");
     }
   }, [usuario, isLoading, navigate]);
