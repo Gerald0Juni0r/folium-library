@@ -42,26 +42,6 @@ const Header = () => {
             </div>
           </Link>
 
-          {/* Navigation Desktop */}
-          <nav className="nav-desktop">
-            <Link to="/biblioteca" className="nav-link">
-              <Search size={16} />
-              Buscar
-            </Link>
-            <Link to="/biblioteca?tab=quero-ler" className="nav-link">
-              <BookmarkCheck size={16} />
-              Quero Ler
-            </Link>
-            <Link to="/biblioteca?tab=lido" className="nav-link">
-              <BookOpen size={16} />
-              Lidos
-            </Link>
-            <Link to="/biblioteca?tab=favoritos" className="nav-link">
-              <Heart size={16} />
-              Favoritos
-            </Link>
-          </nav>
-
           {/* User Actions Desktop */}
           <div className="user-actions-desktop">
             <button
