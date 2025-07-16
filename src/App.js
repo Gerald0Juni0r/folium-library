@@ -17,7 +17,7 @@ function App() {
     <ThemeProvider>
       <AuthProvider>
         <BookListsProvider>
-          <Router basename="/folium">
+          <Router>
             <div className="App">
               <Routes>
                 <Route path="/" element={<LandingPage />} />
