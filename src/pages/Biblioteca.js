@@ -40,16 +40,49 @@ const Biblioteca = () => {
     ordenacao: "relevance",
   });
 
+  // Load popular books on mount
+  const loadPopularBooks = async () => {
+    setIsLoadingPopular(true);
+    try {
+      const popularQueries = [
+        "Harry Potter",
+        "Dom Casmurro",
+        "O Alquimista",
+        "1984",
+        "O Hobbit",
+        "Sapiens",
+        "O Pequeno Príncipe",
+        "Cem Anos de Solidão",
+      ];
+
+      const randomQuery =
+        popularQueries[Math.floor(Math.random() * popularQueries.length)];
+      let searchUrl = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(randomQuery)}&maxResults=20&orderBy=relevance`;
+
+      const response = await fetch(searchUrl);
+      const data = await response.json();
+
+      if (data.items) {
+        setPopularBooks(data.items);
+      }
+    } catch (error) {
+      console.error("Erro ao carregar livros populares:", error);
+    } finally {
+      setIsLoadingPopular(false);
+    }
+  };
+
   // Google Books API search
   const searchBooks = async (query, filters = {}) => {
-    if (!query.trim()) {
-      toast.error("Digite algo para buscar");
+    if (!query.trim() && !filters.categoria) {
+      toast.error("Digite algo para buscar ou selecione uma categoria");
       return;
     }
 
     setIsSearching(true);
     try {
-      let searchUrl = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&maxResults=20`;
+      let searchQuery = query.trim() || "bestsellers";
+      let searchUrl = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(searchQuery)}&maxResults=20`;
 
       // Add filters
       if (filters.categoria) {
