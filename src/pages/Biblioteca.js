@@ -153,7 +153,8 @@ const Biblioteca = () => {
               onClick={() => handleTabChange("search")}
             >
               <Search size={16} />
-              Buscar Livros
+              <span className="tab-text-desktop">Buscar Livros</span>
+              <span className="tab-text-mobile">Buscar</span>
             </button>
             <button
               className={`tab ${activeTab === "quero-ler" ? "active" : ""}`}
