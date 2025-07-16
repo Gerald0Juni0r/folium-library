@@ -11,7 +11,7 @@ const Biblioteca = () => {
     if (!isLoading && !user) {
       navigate("/login");
     }
-  }, [usuario, isLoading, navigate]);
+  }, [user, isLoading, navigate]);
 
   if (isLoading) {
     return (
@@ -21,7 +21,7 @@ const Biblioteca = () => {
     );
   }
 
-  if (!usuario) {
+  if (!user) {
     return null;
   }
 
