@@ -320,12 +320,13 @@ const Biblioteca = () => {
                     <label className="filter-label">Idioma</label>
                     <select
                       value={searchFilters.idioma}
-                      onChange={(e) =>
-                        setSearchFilters((prev) => ({
-                          ...prev,
+                      onChange={(e) => {
+                        const newFilters = {
+                          ...searchFilters,
                           idioma: e.target.value,
-                        }))
-                      }
+                        };
+                        setSearchFilters(newFilters);
+                      }}
                       className="filter-select"
                     >
                       <option value="all">Todos os idiomas</option>
@@ -340,12 +341,13 @@ const Biblioteca = () => {
                     <label className="filter-label">Ordenação</label>
                     <select
                       value={searchFilters.ordenacao}
-                      onChange={(e) =>
-                        setSearchFilters((prev) => ({
-                          ...prev,
+                      onChange={(e) => {
+                        const newFilters = {
+                          ...searchFilters,
                           ordenacao: e.target.value,
-                        }))
-                      }
+                        };
+                        setSearchFilters(newFilters);
+                      }}
                       className="filter-select"
                     >
                       <option value="relevance">Relevância</option>
