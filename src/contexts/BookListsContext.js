@@ -31,7 +31,7 @@ export const BookListsProvider = ({ children }) => {
         } catch (error) {
           console.error("Erro ao carregar listas:", error);
         }
-      } else if (usuario.email === "folium@folium.com") {
+      } else if (user.email === "folium@folium.com") {
         // Adicionar listas de exemplo para o usuário teste
         const listasExemplo = {
           "quero-ler": [
