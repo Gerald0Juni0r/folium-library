@@ -23,7 +23,7 @@ export const BookListsProvider = ({ children }) => {
 
   // Carregar listas do localStorage quando usuário fizer login
   useEffect(() => {
-    if (usuario) {
+    if (user) {
       const listaSalvas = localStorage.getItem("folium-listas");
       if (listaSalvas) {
         try {
