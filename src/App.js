@@ -1,18 +1,85 @@
 import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import { ThemeProvider } from "./contexts/ThemeContext";
+import { AuthProvider, useAuth } from "./contexts/AuthContext";
+import { BookListsProvider } from "./contexts/BookListsContext";
+import LandingPage from "./pages/LandingPage";
+import Login from "./pages/Login";
+import Cadastro from "./pages/Cadastro";
+import Biblioteca from "./pages/Biblioteca";
+import Perfil from "./pages/Perfil";
+import NotFound from "./pages/NotFound";
 import "./styles/index.css";
+
+function ProtectedRoute({ children }) {
+  const { user } = useAuth();
+  return user ? children : <Navigate to="/login" replace />;
+}
+
+function PublicRoute({ children }) {
+  const { user } = useAuth();
+  return !user ? children : <Navigate to="/biblioteca" replace />;
+}
+
+function AppRoutes() {
+  return (
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route
+        path="/login"
+        element={
+          <PublicRoute>
+            <Login />
+          </PublicRoute>
+        }
+      />
+      <Route
+        path="/cadastro"
+        element={
+          <PublicRoute>
+            <Cadastro />
+          </PublicRoute>
+        }
+      />
+      <Route
+        path="/biblioteca"
+        element={
+          <ProtectedRoute>
+            <Biblioteca />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/perfil"
+        element={
+          <ProtectedRoute>
+            <Perfil />
+          </ProtectedRoute>
+        }
+      />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  );
+}
 
 function App() {
   return (
-    <div className="App">
-      <div className="container">
-        <div className="text-center p-xl">
-          <div className="hero-icon mb-lg">📚</div>
-          <h1 className="mb-md">Folium</h1>
-          <p className="text-secondary mb-lg">Sua biblioteca pessoal digital</p>
-          <p>Aplicação React funcionando! ✅</p>
-        </div>
-      </div>
-    </div>
+    <ThemeProvider>
+      <AuthProvider>
+        <BookListsProvider>
+          <Router>
+            <div className="App">
+              <AppRoutes />
+            </div>
+          </Router>
+        </BookListsProvider>
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
 
