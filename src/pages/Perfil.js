@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import { useBookLists } from "../contexts/BookListsContext";
 import { toast } from "../components/Toast";
 import {
   ArrowLeft,
