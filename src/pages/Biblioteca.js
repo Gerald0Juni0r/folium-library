@@ -137,6 +137,11 @@ const Biblioteca = () => {
     }
   };
 
+  // Load popular books on mount
+  useEffect(() => {
+    loadPopularBooks();
+  }, []);
+
   // Update active tab from URL params
   useEffect(() => {
     const tab = searchParams.get("tab");
