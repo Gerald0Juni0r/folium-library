@@ -224,6 +224,13 @@ export const BookmarkPlus = (props) => (
   </Icon>
 );
 
+export const BookmarkCheck = (props) => (
+  <Icon {...props}>
+    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+    <polyline points="9,11 12,14 16,10" />
+  </Icon>
+);
+
 export const Users = (props) => (
   <Icon {...props}>
     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
