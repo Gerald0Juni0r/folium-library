@@ -150,7 +150,7 @@ const Biblioteca = () => {
     }
   };
 
-  // Load popular books on mount
+  // Load bestsellers on mount
   useEffect(() => {
     loadPopularBooks();
   }, []);
