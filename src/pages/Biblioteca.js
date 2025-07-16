@@ -16,6 +16,7 @@ import {
 } from "../components/Icons";
 import "../components/Header.css";
 import "../components/BookCard.css";
+import "./Biblioteca.css";
 
 const Biblioteca = () => {
   const { user } = useAuth();
