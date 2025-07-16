@@ -272,7 +272,10 @@ const Biblioteca = () => {
                     type="submit"
                     disabled={
                       isSearching ||
-                      (!searchQuery.trim() && !searchFilters.categoria)
+                      (!searchQuery.trim() &&
+                        !searchFilters.categoria &&
+                        searchFilters.idioma === "pt" &&
+                        searchFilters.ordenacao === "relevance")
                     }
                     className="btn btn-primary"
                   >
