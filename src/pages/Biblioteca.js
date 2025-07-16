@@ -40,24 +40,21 @@ const Biblioteca = () => {
     ordenacao: "relevance",
   });
 
-  // Load popular books on mount
+  // Load bestsellers on mount
   const loadPopularBooks = async () => {
     setIsLoadingPopular(true);
     try {
-      const popularQueries = [
-        "Harry Potter",
-        "Dom Casmurro",
-        "O Alquimista",
-        "1984",
-        "O Hobbit",
-        "Sapiens",
-        "O Pequeno Príncipe",
-        "Cem Anos de Solidão",
+      // Search for bestsellers with specific queries
+      const bestsellerQueries = [
+        "bestsellers",
+        "best selling books",
+        "top books",
+        "popular books 2024",
       ];
 
       const randomQuery =
-        popularQueries[Math.floor(Math.random() * popularQueries.length)];
-      let searchUrl = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(randomQuery)}&maxResults=20&orderBy=relevance`;
+        bestsellerQueries[Math.floor(Math.random() * bestsellerQueries.length)];
+      let searchUrl = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(randomQuery)}&maxResults=20&orderBy=relevance&printType=books`;
 
       const response = await fetch(searchUrl);
       const data = await response.json();
