@@ -270,7 +270,10 @@ const Biblioteca = () => {
                   </button>
                   <button
                     type="submit"
-                    disabled={isSearching || !searchQuery.trim()}
+                    disabled={
+                      isSearching ||
+                      (!searchQuery.trim() && !searchFilters.categoria)
+                    }
                     className="btn btn-primary"
                   >
                     {isSearching ? (
