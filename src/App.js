@@ -14,6 +14,7 @@ import Cadastro from "./pages/Cadastro";
 import Biblioteca from "./pages/Biblioteca";
 import Perfil from "./pages/Perfil";
 import NotFound from "./pages/NotFound";
+import Toast from "./components/Toast";
 import "./styles/index.css";
 
 function ProtectedRoute({ children }) {
