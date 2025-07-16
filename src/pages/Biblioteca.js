@@ -51,7 +51,7 @@ const Biblioteca = () => {
               </div>
             </div>
             <div>
-              <p>Olá, {usuario.nome}!</p>
+              <p>Olá, {user.nome}!</p>
             </div>
           </div>
         </div>
