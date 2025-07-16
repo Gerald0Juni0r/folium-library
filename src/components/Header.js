@@ -111,7 +111,7 @@ const Header = () => {
                   onClick={() => setMenuOpen(false)}
                 >
                   <Search size={16} />
-                  Buscar Livros
+                  Buscar
                 </Link>
                 <Link
                   to="/biblioteca?tab=quero-ler"
