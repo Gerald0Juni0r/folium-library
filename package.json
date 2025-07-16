@@ -36,5 +36,11 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "/folium"
+  "homepage": "/folium",
+  "devDependencies": {
+    "@types/node": "^24.0.14",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "typescript": "^5.8.3"
+  }
 }
