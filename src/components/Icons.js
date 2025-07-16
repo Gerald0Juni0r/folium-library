@@ -281,6 +281,7 @@ export default {
   Check,
   MoreHorizontal,
   BookmarkPlus,
+  BookmarkCheck,
   Users,
   Loader,
 };
