@@ -122,6 +122,10 @@ const Biblioteca = () => {
     searchBooks(searchQuery, searchFilters);
   };
 
+  const handleFilterSearch = () => {
+    searchBooks(searchQuery, searchFilters);
+  };
+
   const clearSearch = () => {
     setSearchQuery("");
     setSearchResults([]);
