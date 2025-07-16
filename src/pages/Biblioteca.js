@@ -295,12 +295,13 @@ const Biblioteca = () => {
                     <label className="filter-label">Categoria</label>
                     <select
                       value={searchFilters.categoria}
-                      onChange={(e) =>
-                        setSearchFilters((prev) => ({
-                          ...prev,
+                      onChange={(e) => {
+                        const newFilters = {
+                          ...searchFilters,
                           categoria: e.target.value,
-                        }))
-                      }
+                        };
+                        setSearchFilters(newFilters);
+                      }}
                       className="filter-select"
                     >
                       <option value="">Todas as categorias</option>
