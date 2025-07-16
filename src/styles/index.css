@@ -802,6 +802,78 @@ a:hover {
   }
 }
 
+/* Spinner Animation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+/* Additional Mobile Fixes */
+@media (max-width: 767px) {
+  html {
+    font-size: 14px;
+  }
+
+  .container {
+    padding-left: var(--spacing-sm);
+    padding-right: var(--spacing-sm);
+  }
+
+  /* Improve touch targets */
+  button,
+  .btn,
+  a[role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Prevent zoom on inputs */
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+  }
+
+  /* Better text sizes for mobile */
+  h1 {
+    font-size: 1.75rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  h3 {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 479px) {
+  html {
+    font-size: 13px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+  h2 {
+    font-size: 1.25rem;
+  }
+}
+
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+  body {
+    min-height: -webkit-fill-available;
+  }
+}
+
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -810,5 +882,9 @@ a:hover {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .spinner {
+    animation: none;
   }
 }
