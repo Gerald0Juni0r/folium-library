@@ -76,6 +76,7 @@ function App() {
           <Router>
             <div className="App">
               <AppRoutes />
+              <Toast />
             </div>
           </Router>
         </BookListsProvider>
