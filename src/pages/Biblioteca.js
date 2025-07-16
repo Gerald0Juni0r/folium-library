@@ -421,9 +421,9 @@ const Biblioteca = () => {
                 ) : popularBooks.length > 0 ? (
                   <>
                     <div className="results-header">
-                      <h2>Livros Populares</h2>
+                      <h2>Bestsellers</h2>
                       <p className="text-secondary">
-                        Descubra alguns dos livros mais procurados
+                        Descubra os livros mais vendidos e bem avaliados
                       </p>
                     </div>
                     <div className="books-grid">
