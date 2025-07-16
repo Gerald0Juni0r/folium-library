@@ -325,6 +325,15 @@
   margin-bottom: var(--spacing-xs);
 }
 
+/* Tab Text Responsive */
+.tab-text-mobile {
+  display: none;
+}
+
+.tab-text-desktop {
+  display: inline;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .search-actions {
@@ -347,6 +356,15 @@
 
   .tab {
     padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  /* Show mobile text, hide desktop text */
+  .tab-text-mobile {
+    display: inline;
+  }
+
+  .tab-text-desktop {
+    display: none;
   }
 }
 
