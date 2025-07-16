@@ -4,7 +4,7 @@ import { useAuth } from "../contexts/AuthContext";
 import { BookOpen, Loader } from "../components/Icons";
 
 const Biblioteca = () => {
-  const { usuario, isLoading } = useAuth();
+  const { user, isLoading } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
