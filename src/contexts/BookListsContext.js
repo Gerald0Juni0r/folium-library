@@ -86,7 +86,7 @@ export const BookListsProvider = ({ children }) => {
     if (user) {
       localStorage.setItem("folium-listas", JSON.stringify(listas));
     }
-  }, [listas, usuario]);
+  }, [listas, user]);
 
   const adicionarALista = (tipo, livro) => {
     setListas((prev) => ({
