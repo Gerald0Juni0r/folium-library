@@ -38,7 +38,6 @@ const Header = () => {
             </div>
             <div className="logo-text">
               <h1>Folium</h1>
-              <span>Biblioteca</span>
             </div>
           </Link>
 
