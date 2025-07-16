@@ -222,7 +222,7 @@
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .nav-desktop,
   .user-actions-desktop {
     display: none;
@@ -231,7 +231,9 @@
   .mobile-menu-button {
     display: block;
   }
+}
 
+@media (max-width: 768px) {
   .header-content {
     padding: var(--spacing-sm) 0;
   }
