@@ -359,8 +359,8 @@ const Biblioteca = () => {
                     <div className="results-header">
                       <h2>Resultados da busca</h2>
                       <p className="text-secondary">
-                        {searchResults.length} livros encontrados para "
-                        {searchQuery}"
+                        {searchResults.length} livros encontrados
+                        {searchQuery && ` para "${searchQuery}"`}
                       </p>
                     </div>
                     <div className="books-grid">
@@ -388,29 +388,56 @@ const Biblioteca = () => {
               </div>
             )}
 
-            {/* Search Welcome */}
+            {/* Popular Books */}
             {!hasSearched && (
-              <div className="search-welcome">
-                <div className="welcome-content">
-                  <div className="welcome-icon">
-                    <Search size={64} />
+              <div className="popular-books">
+                {isLoadingPopular ? (
+                  <div className="loading-state">
+                    <Loader size={32} />
+                    <p>Carregando livros populares...</p>
                   </div>
-                  <h2>Descubra novos livros</h2>
-                  <p>
-                    Use a busca acima para encontrar livros por título, autor ou
-                    palavra-chave. Nossa busca é integrada com a Google Books
-                    API e oferece milhões de títulos.
-                  </p>
-                  <div className="search-tips">
-                    <h4>Dicas de busca:</h4>
-                    <ul>
-                      <li>• Digite o título exato ou parte dele</li>
-                      <li>• Busque pelo nome do autor</li>
-                      <li>• Use palavras-chave relacionadas ao tema</li>
-                      <li>• Experimente filtrar por categoria ou idioma</li>
-                    </ul>
+                ) : popularBooks.length > 0 ? (
+                  <>
+                    <div className="results-header">
+                      <h2>Livros Populares</h2>
+                      <p className="text-secondary">
+                        Descubra alguns dos livros mais procurados
+                      </p>
+                    </div>
+                    <div className="books-grid">
+                      {popularBooks.map((book) => (
+                        <BookCard
+                          key={book.id}
+                          book={book}
+                          showActions={true}
+                        />
+                      ))}
+                    </div>
+                  </>
+                ) : (
+                  <div className="search-welcome">
+                    <div className="welcome-content">
+                      <div className="welcome-icon">
+                        <Search size={64} />
+                      </div>
+                      <h2>Descubra novos livros</h2>
+                      <p>
+                        Use a busca acima para encontrar livros por título,
+                        autor ou palavra-chave. Nossa busca é integrada com a
+                        Google Books API e oferece milhões de títulos.
+                      </p>
+                      <div className="search-tips">
+                        <h4>Dicas de busca:</h4>
+                        <ul>
+                          <li>• Digite o título exato ou parte dele</li>
+                          <li>• Busque pelo nome do autor</li>
+                          <li>• Use palavras-chave relacionadas ao tema</li>
+                          <li>• Experimente filtrar por categoria ou idioma</li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             )}
           </div>
