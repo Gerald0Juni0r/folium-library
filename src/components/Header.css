@@ -145,6 +145,10 @@
 
 .mobile-menu-content {
   padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .mobile-user-info {
