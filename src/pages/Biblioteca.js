@@ -74,8 +74,20 @@ const Biblioteca = () => {
 
   // Google Books API search
   const searchBooks = async (query, filters = {}) => {
-    if (!query.trim() && !filters.categoria) {
-      toast.error("Digite algo para buscar ou selecione uma categoria");
+    // Check if there's any search criteria
+    const hasQuery = query.trim();
+    const hasCategory = filters.categoria;
+    const hasNonDefaultLanguage = filters.idioma && filters.idioma !== "pt";
+    const hasNonDefaultOrder =
+      filters.ordenacao && filters.ordenacao !== "relevance";
+
+    if (
+      !hasQuery &&
+      !hasCategory &&
+      !hasNonDefaultLanguage &&
+      !hasNonDefaultOrder
+    ) {
+      toast.error("Digite algo para buscar ou altere algum filtro");
       return;
     }
 
