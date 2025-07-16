@@ -282,7 +282,9 @@ const Perfil = () => {
                   <BookmarkCheck size={24} />
                 </div>
                 <div className="stat-info">
-                  <span className="stat-number">0</span>
+                  <span className="stat-number">
+                    {listas["quero-ler"]?.length || 0}
+                  </span>
                   <span className="stat-label">Quero Ler</span>
                 </div>
               </div>
@@ -292,7 +294,9 @@ const Perfil = () => {
                   <BookOpen size={24} />
                 </div>
                 <div className="stat-info">
-                  <span className="stat-number">0</span>
+                  <span className="stat-number">
+                    {listas.lido?.length || 0}
+                  </span>
                   <span className="stat-label">Lidos</span>
                 </div>
               </div>
@@ -302,7 +306,9 @@ const Perfil = () => {
                   <Heart size={24} />
                 </div>
                 <div className="stat-info">
-                  <span className="stat-number">0</span>
+                  <span className="stat-number">
+                    {listas.favorito?.length || 0}
+                  </span>
                   <span className="stat-label">Favoritos</span>
                 </div>
               </div>
