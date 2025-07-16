@@ -196,6 +196,8 @@
   gap: var(--spacing-sm);
   border-top: 1px solid var(--border);
   padding-top: var(--spacing-lg);
+  width: 100%;
+  max-width: 300px;
 }
 
 .mobile-action-btn {
