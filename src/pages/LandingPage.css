@@ -61,6 +61,13 @@
   border: 1px solid var(--border);
 }
 
+/* Garantir que menu hambúrguer esteja escondido no desktop */
+@media (min-width: 769px) {
+  .menu-toggle {
+    display: none !important;
+  }
+}
+
 .mobile-menu {
   display: none;
   flex-direction: column;
