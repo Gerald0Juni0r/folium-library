@@ -1,8 +1,10 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { useAuth } from "./AuthContext";
 
+// Context para gerenciar as listas de livros do usuário
 const BookListsContext = createContext();
 
+// Hook customizado para usar o contexto das listas
 export const useBookLists = () => {
   const context = useContext(BookListsContext);
   if (!context) {
@@ -13,26 +15,31 @@ export const useBookLists = () => {
   return context;
 };
 
+// Provider das listas de livros - gerencia estado e persistência
 export const BookListsProvider = ({ children }) => {
   const { user } = useAuth();
+  
+  // Estado das três listas principais do usuário
   const [listas, setListas] = useState({
     "quero-ler": [],
     lido: [],
     favorito: [],
   });
 
-  // Carregar listas do localStorage quando usuário fizer login
+  // Carrega listas salvas do localStorage quando usuário faz login
   useEffect(() => {
     if (user) {
       const listaSalvas = localStorage.getItem("folium-listas");
+      
       if (listaSalvas) {
         try {
+          // Carrega listas existentes do localStorage
           setListas(JSON.parse(listaSalvas));
         } catch (error) {
           console.error("Erro ao carregar listas:", error);
         }
       } else if (user.email === "folium@folium.com") {
-        // Adicionar listas de exemplo para o usuário teste
+        // Adiciona livros de exemplo apenas para o usuário de teste
         const listasExemplo = {
           "quero-ler": [
             {
@@ -72,7 +79,7 @@ export const BookListsProvider = ({ children }) => {
         setListas(listasExemplo);
       }
     } else {
-      // Limpar listas quando usuário fizer logout
+      // Limpa listas quando usuário faz logout
       setListas({
         "quero-ler": [],
         lido: [],
@@ -81,13 +88,16 @@ export const BookListsProvider = ({ children }) => {
     }
   }, [user]);
 
-  // Salvar listas no localStorage sempre que mudarem
+  // Persiste listas no localStorage sempre que houver mudanças
+  // Este useEffect garante que as listas sejam salvas automaticamente
   useEffect(() => {
     if (user) {
       localStorage.setItem("folium-listas", JSON.stringify(listas));
     }
   }, [listas, user]);
 
+  // Adiciona um livro a uma lista específica
+  // Remove duplicatas automaticamente (caso livro já esteja na lista)
   const adicionarALista = (tipo, livro) => {
     setListas((prev) => ({
       ...prev,
@@ -95,6 +105,7 @@ export const BookListsProvider = ({ children }) => {
     }));
   };
 
+  // Remove um livro de uma lista específica
   const removerDaLista = (tipo, livroId) => {
     setListas((prev) => ({
       ...prev,
@@ -102,14 +113,17 @@ export const BookListsProvider = ({ children }) => {
     }));
   };
 
+  // Verifica se um livro específico está em uma lista
   const livroEstaEmLista = (livroId, tipo) => {
     return listas[tipo].some((l) => l.id === livroId);
   };
 
+  // Retorna todos os livros de uma lista específica
   const obterLivrosPorTipo = (tipo) => {
     return listas[tipo];
   };
 
+  // Limpa todas as listas (usado no logout)
   const limparTodasListas = () => {
     setListas({
       "quero-ler": [],
@@ -119,6 +133,7 @@ export const BookListsProvider = ({ children }) => {
     localStorage.removeItem("folium-listas");
   };
 
+  // Funções e estado disponíveis para componentes filhos
   const value = {
     listas,
     adicionarALista,
