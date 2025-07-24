@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { useAuth } from "./AuthContext";
+import { saveLists, loadLists } from "../utils/dataManager";
 
 // Context para gerenciar as listas de livros do usuário
 const BookListsContext = createContext();
