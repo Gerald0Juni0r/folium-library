@@ -2,8 +2,8 @@
   "name": "folium-react",
   "version": "1.0.0",
   "private": true,
+  "description": "Sua biblioteca pessoal digital - Aplicação React para gerenciar livros",
   "dependencies": {
-    "ajv": "^8.17.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.2"
@@ -15,10 +15,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
-    "react-scripts": "^5.0.1",
-    "typescript": "^5.8.3"
+    "react-scripts": "^5.0.1"
   },
   "browserslist": {
     "production": [
@@ -31,5 +28,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "keywords": [
+    "biblioteca",
+    "livros",
+    "react",
+    "javascript",
+    "css3"
+  ],
+  "author": "Folium Team",
+  "license": "MIT"
 }
