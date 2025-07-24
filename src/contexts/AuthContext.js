@@ -1,7 +1,9 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 
+// Context para gerenciar autenticação do usuário
 const AuthContext = createContext();
 
+// Hook customizado para usar o contexto de autenticação
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
@@ -10,30 +12,35 @@ export const useAuth = () => {
   return context;
 };
 
+// Provider de autenticação - gerencia login, logout e estado do usuário
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
+  // Verifica se há usuário logado salvo no localStorage ao inicializar
   useEffect(() => {
-    // Verificar se há usuário salvo no localStorage
     const userSaved = localStorage.getItem("folium-usuario");
+    
     if (userSaved) {
       try {
+        // Restaura sessão do usuário
         setUser(JSON.parse(userSaved));
       } catch (error) {
         console.error("Erro ao carregar usuário:", error);
+        // Remove dados corrompidos
         localStorage.removeItem("folium-usuario");
       }
     }
     setIsLoading(false);
   }, []);
 
+  // Função de login - aceita credenciais de teste e outras válidas
   const login = async (email, senha) => {
     try {
-      // Simular chamada de API
+      // Simula chamada de API com delay
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      // Credenciais de teste específicas
+      // Credenciais específicas para usuário de teste
       if (email === "folium@folium.com" && senha === "123456") {
         const testUser = {
           id: "1",
@@ -47,11 +54,11 @@ export const AuthProvider = ({ children }) => {
         return { success: true };
       }
 
-      // Para demonstração, aceitar qualquer outro email/senha válidos
+      // Aceita qualquer email/senha válidos para demonstração
       if (email && senha && senha.length >= 6) {
         const newUser = {
           id: Date.now().toString(),
-          nome: email.split("@")[0],
+          nome: email.split("@")[0], // Usa parte do email como nome
           email: email,
           foto: null,
         };
@@ -68,9 +75,10 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  // Função de cadastro - cria novo usuário
   const cadastrar = async (nome, email, senha) => {
     try {
-      // Simular chamada de API
+      // Simula chamada de API
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
       if (nome && email && senha) {
@@ -93,9 +101,10 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  // Atualiza dados do usuário (usado no perfil)
   const updateUser = async (updatedData) => {
     try {
-      // Simular chamada de API
+      // Simula chamada de API
       await new Promise((resolve) => setTimeout(resolve, 500));
 
       setUser(updatedData);
@@ -107,12 +116,14 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  // Função de logout - limpa estado e localStorage
   const logout = () => {
     setUser(null);
     localStorage.removeItem("folium-usuario");
-    localStorage.removeItem("folium-listas");
+    localStorage.removeItem("folium-listas"); // Limpa também as listas
   };
 
+  // Estado e funções disponíveis para componentes filhos
   const value = {
     user,
     isLoading,
