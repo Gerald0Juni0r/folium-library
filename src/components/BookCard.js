@@ -10,12 +10,15 @@ import {
   MoreHorizontal,
 } from "./Icons";
 
+// Componente de card para exibir informações de um livro
+// Permite adicionar/remover livros das listas do usuário
 const BookCard = ({ book, showActions = true, compact = false }) => {
   const { livroEstaEmLista, adicionarALista, removerDaLista } = useBookLists();
   const [imageError, setImageError] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Normalize book data from Google Books API
+  // Normaliza dados do livro vindos da API do Google Books
+  // Garante compatibilidade com diferentes formatos de dados
   const bookData = {
     id: book.id,
     titulo: book.volumeInfo?.title || book.titulo || "Título não disponível",
@@ -39,10 +42,12 @@ const BookCard = ({ book, showActions = true, compact = false }) => {
     dataAdicao: book.dataAdicao || new Date().toISOString(),
   };
 
+  // Verifica se o livro está em cada uma das listas
   const isInQueroLer = livroEstaEmLista(bookData.id, "quero-ler");
   const isInLido = livroEstaEmLista(bookData.id, "lido");
   const isInFavoritos = livroEstaEmLista(bookData.id, "favorito");
 
+  // Alterna presença do livro em uma lista específica
   const handleToggleList = (listType) => {
     const isInList = livroEstaEmLista(bookData.id, listType);
 
@@ -56,6 +61,7 @@ const BookCard = ({ book, showActions = true, compact = false }) => {
     setMenuOpen(false);
   };
 
+  // Converte nome técnico da lista para nome amigável
   const getListDisplayName = (listType) => {
     const names = {
       "quero-ler": "Quero Ler",
@@ -65,6 +71,7 @@ const BookCard = ({ book, showActions = true, compact = false }) => {
     return names[listType] || listType;
   };
 
+  // Formata array de autores para exibição
   const formatAuthors = (authors) => {
     if (!Array.isArray(authors)) return authors || "Autor desconhecido";
     if (authors.length === 1) return authors[0];
@@ -72,16 +79,19 @@ const BookCard = ({ book, showActions = true, compact = false }) => {
     return `${authors[0]} e outros`;
   };
 
+  // Renderiza estrelas de avaliação
   const renderStars = (rating) => {
     if (!rating) return null;
     const stars = [];
     const fullStars = Math.floor(rating);
     const hasHalfStar = rating % 1 !== 0;
 
+    // Adiciona estrelas cheias
     for (let i = 0; i < fullStars; i++) {
       stars.push(<Star key={i} size={12} fill="currentColor" />);
     }
 
+    // Adiciona meia estrela se necessário
     if (hasHalfStar) {
       stars.push(
         <Star key="half" size={12} fill="currentColor" opacity={0.5} />,
@@ -98,7 +108,7 @@ const BookCard = ({ book, showActions = true, compact = false }) => {
 
   return (
     <div className={`book-card ${compact ? "book-card-compact" : ""}`}>
-      {/* Book Cover */}
+      {/* Capa do livro */}
       <div className="book-cover">
         {bookData.capa && !imageError ? (
           <img
@@ -108,11 +118,13 @@ const BookCard = ({ book, showActions = true, compact = false }) => {
             loading="lazy"
           />
         ) : (
+          // Placeholder quando não há capa disponível
           <div className="book-cover-placeholder">
             <BookOpen size={compact ? 24 : 32} />
           </div>
         )}
 
+        {/* Botão de favoritar sobreposto à capa */}
         {showActions && (
           <div className="book-cover-overlay">
             <button
@@ -130,7 +142,7 @@ const BookCard = ({ book, showActions = true, compact = false }) => {
         )}
       </div>
 
-      {/* Book Info */}
+      {/* Informações do livro */}
       <div className="book-info">
         <h3 className="book-title" title={bookData.titulo}>
           {bookData.titulo}
@@ -140,16 +152,20 @@ const BookCard = ({ book, showActions = true, compact = false }) => {
           {formatAuthors(bookData.autores)}
         </p>
 
+        {/* Exibe avaliação se disponível */}
         {bookData.avaliacaoMedia && (
           <div className="book-meta">
             {renderStars(bookData.avaliacaoMedia)}
           </div>
         )}
 
+        {/* Categoria (apenas em modo normal, não compact) */}
         {!compact && <div className="book-category">{bookData.categoria}</div>}
 
+        {/* Ações do livro (adicionar a listas) */}
         {showActions && (
           <div className="book-actions">
+            {/* Botão Quero Ler */}
             <button
               className={`action-btn ${isInQueroLer ? "active" : ""}`}
               onClick={() => handleToggleList("quero-ler")}
@@ -164,6 +180,7 @@ const BookCard = ({ book, showActions = true, compact = false }) => {
               )}
             </button>
 
+            {/* Botão Lido */}
             <button
               className={`action-btn ${isInLido ? "active" : ""}`}
               onClick={() => handleToggleList("lido")}
@@ -172,6 +189,7 @@ const BookCard = ({ book, showActions = true, compact = false }) => {
               <BookOpen size={16} />
             </button>
 
+            {/* Menu com mais opções */}
             <div className="action-menu">
               <button
                 className="action-btn menu-trigger"
@@ -181,6 +199,7 @@ const BookCard = ({ book, showActions = true, compact = false }) => {
                 <MoreHorizontal size={16} />
               </button>
 
+              {/* Dropdown do menu */}
               {menuOpen && (
                 <div className="action-menu-dropdown">
                   <button
