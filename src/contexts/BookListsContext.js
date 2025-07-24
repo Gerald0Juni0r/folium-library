@@ -74,6 +74,9 @@ export const BookListsProvider = ({ children }) => {
           ],
         };
         setListas(listasExemplo);
+      } else {
+        // Carrega listas existentes
+        setListas(listasCarregadas);
       }
     } else {
       // Limpa listas quando usuário faz logout
