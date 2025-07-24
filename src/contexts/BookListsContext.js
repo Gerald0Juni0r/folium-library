@@ -30,16 +30,12 @@ export const BookListsProvider = ({ children }) => {
   // Carrega listas salvas do localStorage quando usuário faz login
   useEffect(() => {
     if (user) {
-      const listaSalvas = localStorage.getItem("folium-listas");
-      
-      if (listaSalvas) {
-        try {
-          // Carrega listas existentes do localStorage
-          setListas(JSON.parse(listaSalvas));
-        } catch (error) {
-          console.error("Erro ao carregar listas:", error);
-        }
-      } else if (user.email === "folium@folium.com") {
+      // Usa o sistema de backup para carregar listas
+      const listasCarregadas = loadLists(user.id);
+
+      // Se não há listas salvas e é o usuário de teste, adiciona exemplos
+      if (Object.values(listasCarregadas).every(lista => lista.length === 0) &&
+          user.email === "folium@folium.com") {
         // Adiciona livros de exemplo apenas para o usuário de teste
         const listasExemplo = {
           "quero-ler": [
