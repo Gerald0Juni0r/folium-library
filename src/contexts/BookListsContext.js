@@ -89,10 +89,10 @@ export const BookListsProvider = ({ children }) => {
   }, [user]);
 
   // Persiste listas no localStorage sempre que houver mudanças
-  // Este useEffect garante que as listas sejam salvas automaticamente
+  // Este useEffect garante que as listas sejam salvas automaticamente com backup
   useEffect(() => {
     if (user) {
-      localStorage.setItem("folium-listas", JSON.stringify(listas));
+      saveLists(listas, user.id);
     }
   }, [listas, user]);
 
