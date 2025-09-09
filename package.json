@@ -1,6 +1,7 @@
 {
   "name": "folium-react",
   "version": "1.0.0",
+  "homepage": "https://gerald0juni0r.github.io/folium-library",
   "private": true,
   "description": "Sua biblioteca pessoal digital - Aplicação React para gerenciar livros",
   "dependencies": {
