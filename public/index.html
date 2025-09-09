@@ -23,9 +23,18 @@
     <title>Folium - Sua Biblioteca Pessoal</title>
   </head>
   <body>
-    <noscript
-      >Você precisa habilitar JavaScript para executar esta aplicação.</noscript
-    >
+    <script>
+      (function() {
+        var params = new URLSearchParams(window.location.search);
+        var p = params.get('p');
+        if (p) {
+          var newUrl = p;
+          try { newUrl = decodeURIComponent(p); } catch(e) {}
+          window.history.replaceState({}, '', newUrl);
+        }
+      })();
+    </script>
+    <noscript>Você precisa habilitar JavaScript para executar esta aplicação.</noscript>
     <div id="root"></div>
   </body>
 </html>
