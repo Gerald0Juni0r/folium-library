@@ -73,7 +73,7 @@ function App() {
     <ThemeProvider>
       <AuthProvider>
         <BookListsProvider>
-          <Router>
+          <Router basename={process.env.PUBLIC_URL}>
             <div className="App">
               <AppRoutes />
               <Toast />
