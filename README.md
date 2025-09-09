@@ -15,11 +15,13 @@ Uma aplicação web moderna para gerenciar sua biblioteca pessoal, buscar novos 
 ## ✨ Funcionalidades
 
 ### 🔐 Autenticação
+
 - Login e cadastro de usuários
 - Sessão persistente entre navegações
 - Usuário de teste: `folium@folium.com` / `123456`
 
 ### 📖 Biblioteca Pessoal
+
 - **Busca de livros** via Google Books API
 - **Filtros avançados** por categoria, idioma e ordenação
 - **Três listas personalizadas**:
@@ -28,12 +30,14 @@ Uma aplicação web moderna para gerenciar sua biblioteca pessoal, buscar novos 
   - ❤️ **Favoritos** - Livros preferidos
 
 ### 👤 Perfil de Usuário
+
 - Edição de dados pessoais
 - Upload de foto de perfil
 - Estatísticas de leitura em tempo real
 - Informações da conta
 
 ### 🎨 Interface
+
 - **Design responsivo** - Mobile, tablet e desktop
 - **Tema claro/escuro** - Alternância automática
 - **Notificações** - Feedback visual das ações
@@ -42,6 +46,7 @@ Uma aplicação web moderna para gerenciar sua biblioteca pessoal, buscar novos 
 ## 🏗️ Arquitetura
 
 ### Estrutura de Pastas
+
 ```
 src/
 ├── components/          # Componentes reutilizáveis
@@ -54,11 +59,13 @@ src/
 ```
 
 ### Gerenciamento de Estado
+
 - **AuthContext** - Autenticação e dados do usuário
 - **BookListsContext** - Listas de livros e persistência
 - **ThemeContext** - Tema da aplicação
 
 ### Persistência de Dados
+
 - **LocalStorage** com sistema de backup automático
 - **Sincronização** automática entre dispositivos do mesmo usuário
 - **Recuperação** de dados em caso de falhas
@@ -66,12 +73,14 @@ src/
 ## 🔧 Como Usar
 
 ### Instalação
+
 ```bash
 npm install
 npm start
 ```
 
 ### Credenciais de Teste
+
 - **Email**: `folium@folium.com`
 - **Senha**: `123456`
 
@@ -86,16 +95,19 @@ npm start
 ## 📱 Responsividade
 
 ### Desktop (>1024px)
+
 - Layout completo com todas as funcionalidades
 - Menu horizontal no header
 - Grid otimizado para telas grandes
 
 ### Tablet (768px - 1024px)
+
 - Menu hambúrguer
 - Layout adaptado para touch
 - Grid responsivo
 
 ### Mobile (<768px)
+
 - Interface otimizada para uma mão
 - Menu hambúrguer centralizado
 - Cards compactos
@@ -103,16 +115,19 @@ npm start
 ## 🎨 Design System
 
 ### Cores
+
 - **Modo Claro**: Tons creme e sépia (tema papel antigo)
 - **Modo Escuro**: Tons azul escuro e acinzentado
 - **Accent**: Verde sálvia (#85a472)
 
 ### Tipografia
+
 - **Títulos**: Crimson Text (serif)
 - **Corpo**: Inter (sans-serif)
 - **Tamanhos**: Sistema modular baseado em rem
 
 ### Componentes
+
 - **Cards** - Para livros e informações
 - **Botões** - Hierarquia clara (primário, secundário, ícone)
 - **Formulários** - Estilizados e acessíveis
@@ -121,17 +136,19 @@ npm start
 ## 🔄 Persistência de Dados
 
 ### Sistema Robusto
+
 - **Salvamento automático** a cada alteração
 - **Backup redundante** para prevenir perda de dados
 - **Recuperação inteligente** em caso de falhas
 - **Sincronização** por usuário
 
 ### Estrutura dos Dados
+
 ```javascript
 // Dados do usuário
 {
   id: "string",
-  nome: "string", 
+  nome: "string",
   email: "string",
   foto: "base64_string"
 }
@@ -139,7 +156,7 @@ npm start
 // Listas de livros
 {
   "quero-ler": [livros],
-  "lido": [livros], 
+  "lido": [livros],
   "favorito": [livros]
 }
 ```
@@ -147,16 +164,19 @@ npm start
 ## 🐛 Solução de Problemas
 
 ### Dados Perdidos
+
 - O sistema possui backup automático
 - Dados são restaurados automaticamente ao fazer login
 - Em último caso, faça logout e login novamente
 
 ### Performance
+
 - Imagens carregadas sob demanda (lazy loading)
 - Cache automático das buscas
 - Otimização para dispositivos móveis
 
 ### Compatibilidade
+
 - Navegadores modernos (Chrome, Firefox, Safari, Edge)
 - JavaScript habilitado obrigatório
 - LocalStorage suportado
