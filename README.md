@@ -187,6 +187,8 @@ Este projeto foi desenvolvido para fins educacionais e demonstração.
 
 ---
 
+Link do Folium: https://gerald0juni0r.github.io/folium-library
+
 **Desenvolvido com ❤️ para amantes de livros**
 
 Created with Builder.io
