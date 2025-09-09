@@ -161,10 +161,12 @@ npm start
 - JavaScript habilitado obrigatório
 - LocalStorage suportado
 
-## 📄 Licença
+## ��� Licença
 
 Este projeto foi desenvolvido para fins educacionais e demonstração.
 
 ---
 
 **Desenvolvido com ❤️ para amantes de livros**
+
+Created with Builder.io
