@@ -249,7 +249,7 @@ const LandingPage = () => {
           </div>
 
           <div className="footer-bottom">
-            <p>© 2024 Folium. Todos os direitos reservados.</p>
+            <p>© 2025 Folium. Todos os direitos reservados.</p>
             <p className="footer-love">
               Feito com <Heart size={16} filled /> para amantes de livros
             </p>
