@@ -3,6 +3,10 @@
 Uma aplicação web moderna para gerenciar sua biblioteca pessoal, buscar novos livros e organizar suas leituras.
 
 
+Acesse: [Folium](https://gerald0juni0r.github.io/folium-library)
+
+
+
 ![01](https://github.com/user-attachments/assets/022d8a78-b83c-4b22-b6a4-2b88580b9c29)
 ![02](https://github.com/user-attachments/assets/d84be44d-4a54-496c-a5c0-1030235f48ae)
 
@@ -190,8 +194,6 @@ npm start
 Este projeto foi desenvolvido para fins educacionais e demonstração.
 
 ---
-
-Link do Folium: https://gerald0juni0r.github.io/folium-library
 
 **Desenvolvido com ❤️ para amantes de livros**
 
