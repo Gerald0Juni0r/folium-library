@@ -3,7 +3,7 @@
 Uma aplicação web moderna para gerenciar sua biblioteca pessoal, buscar novos livros e organizar suas leituras.
 
 
-Acesse: [Folium](https://gerald0juni0r.github.io/folium-library)
+Acesse: [Folium](https://folium-library.vercel.app/)
 
 
 
